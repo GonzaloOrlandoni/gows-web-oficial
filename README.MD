@@ -4,7 +4,7 @@
 
 ![Captura de la página de inicio de GO Web Solutions](img/preview-image.png)
 
-**Sitio en Vivo:** [https://gonzaloorlandoni.github.io/go-web-solutions/](https://gonzaloorlandoni.github.io/go-web-solutions/)
+**Sitio en Vivo:** [https://gonzaloorlandoni.github.io/go-web-solutions/](https://gonzaloorlandoni.github.io/gows-web-oficial/)
 
 ---
 
@@ -57,7 +57,7 @@ Si deseas clonar este repositorio para ver el código fuente:
 
 1.  Clona el repositorio:
     ```bash
-    git clone [https://github.com/GonzaloOrlandoni/go-web-solutions.git](https://github.com/GonzaloOrlandoni/go-web-solutions.git)
+    git clone [https://github.com/GonzaloOrlandoni/gows-web-oficial.git](https://github.com/GonzaloOrlandoni/gows-web-oficial.git)
     ```
 2.  Abre el archivo `index.html` en tu navegador o utiliza la extensión **Live Server** de VS Code.
 
