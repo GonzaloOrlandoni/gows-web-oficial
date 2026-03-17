@@ -960,3 +960,220 @@ footer p {
 .proyecto-card:hover .proyecto-info h3::after {
   width: 100%; /* La línea crece al hacer hover en la tarjeta */
 }
+
+/* =========================================
+  RETOQUES: DARK MODE, CURSOR, PROGRESO Y WA
+========================================= */
+
+/* 1. Barra de Progreso */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--accent-color);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s;
+  border-radius: 0 2px 2px 0;
+}
+
+/* 2. Botón y Variables del MODO OSCURO */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+#theme-toggle:hover {
+  transform: scale(1.1);
+  color: var(--accent-color);
+}
+
+body.dark-mode {
+  --primary-text: #f4f4f4;
+  --secondary-text: #a0a0a0;
+  --background-gradient-start: #111111;
+  --background-gradient-end: #1a1a1a;
+  --background-card: #222222;
+}
+body.dark-mode #navbar {
+  border-bottom-color: #333333 !important;
+}
+body.dark-mode .contacto-form input,
+body.dark-mode .contacto-form textarea {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark-mode #navbar.scrolled {
+  background-color: rgba(17, 17, 17, 0.9) !important; /* Negro semi-transparente */
+  border-bottom-color: #333333 !important;
+}
+
+/* 3. Cursor Personalizado Dinámico (Solo en PC) */
+@media (pointer: fine) {
+  body {
+    cursor: none; /* Oculta el cursor nativo */
+  }
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Para que no interfiera con los clics */
+    z-index: 10000;
+    transition:
+      transform 0.15s ease-out,
+      background-color 0.15s,
+      border-color 0.15s;
+    backdrop-filter: blur(2px);
+  }
+  /* Estado cuando pasa por un enlace, botón o tarjeta */
+  .custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(1.8);
+    background-color: rgba(94, 59, 125, 0.1);
+    border-color: rgba(94, 59, 125, 0.5);
+  }
+  /* Mantener cursor original en inputs para poder escribir bien */
+  input,
+  textarea {
+    cursor: text;
+  }
+}
+
+/* 4. Tooltip WhatsApp */
+.wa-tooltip {
+  position: absolute;
+  right: 80px; /* Aparece a la izquierda del logo de WP */
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  background-color: var(--background-card);
+  color: var(--primary-text);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.wa-tooltip::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--background-card);
+}
+.wa-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+
+/* =========================================
+  RETOQUE ESTÉTICO: MODO OSCURO CONTACTO
+========================================= */
+
+/* 1. Fondo del Body y Gradiente al scrollear (Garantía) */
+body.dark-mode {
+  background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* 2. La Tarjeta de Contacto (Gris Oscuro con Grid) */
+body.dark-mode .contacto-wrapper {
+  background-color: #222222 !important; /* Fondo de la tarjeta */
+  border-color: #333333 !important; /* Borde sutil */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
+  background-size: 30px 30px !important;
+}
+
+/* 3. Título Principal (Degradado Púrpura/Violeta) */
+body.dark-mode .contacto-texto h2 {
+  background: linear-gradient(135deg, #5e3b7d 20%, #a275ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 4. Descripciones y Labels (Texto Claro) */
+body.dark-mode .contacto-texto p,
+body.dark-mode .contacto-info span,
+body.dark-mode .contacto-form label {
+  color: #eeeeee !important; /* Texto muy claro para legibilidad */
+}
+
+/* 5. Inputs y Textarea (Fondo oscuro, Borde claro y Texto Claro) */
+body.dark-mode .contacto-form input,
+body.dark-mode .contacto-form textarea {
+  background-color: #333333 !important;
+  color: #ffffff !important; /* Textotyped */
+  border-color: #444444 !important;
+}
+
+/* Texto placeholder (gris claro) */
+body.dark-mode .contacto-form input::placeholder,
+body.dark-mode .contacto-form textarea::placeholder {
+  color: #a0a0a0 !important;
+}
+
+/* Inputs en FOCO (Fuerte Borde y Resplandor) */
+body.dark-mode .contacto-form input:focus,
+body.dark-mode .contacto-form textarea:focus {
+  border-color: #5e3b7d !important; /* Color de acento */
+  box-shadow: 0 0 12px rgba(94, 59, 125, 0.45) !important; /* Efecto Glow */
+}
+
+/* 6. Botón Enviar (Muy visible y con Resplandor) */
+body.dark-mode .contacto-form button {
+  background-color: #5e3b7d !important; /* Color púrpura rico */
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.3) !important; /* Glow sutil */
+  border: none !important;
+}
+
+/* Hover en Botón (Más Glow) */
+body.dark-mode .contacto-form button:hover {
+  background-color: #111111 !important; /* Negro Profundo al pasar */
+  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.5) !important; /* Glow fuerte */
+  color: white !important;
+}
+
+/* =========================================
+  RETOQUES FINALES: BOTONES Y TARJETAS EN DARK MODE
+========================================= */
+
+/* 1. Todos los botones principales iguales al hacer Hover en Dark Mode */
+body.dark-mode .btn--primary:hover {
+  background-color: #111111 !important; /* Se pone casi negro */
+  border-color: #111111 !important;
+  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.6) !important; /* Glow púrpura fuerte */
+  color: #ffffff !important;
+  transform: translateY(-2px) !important; /* Saltito hacia arriba */
+}
+
+/* 2. Recuperar el efecto Hover de las Tarjetas en Dark Mode */
+/* Como la sombra negra no se ve, le damos una sombra púrpura súper elegante y aclaramos el borde */
+body.dark-mode .servicio-item:hover,
+body.dark-mode .proyecto-card:hover,
+body.dark-mode .proceso-paso:hover,
+body.dark-mode .testimonio-card:hover {
+  transform: translateY(-10px) !important; /* El salto hacia arriba */
+  box-shadow: 0 12px 30px rgba(94, 59, 125, 0.2) !important; /* Sombra púrpura mágica */
+  border-color: #444444 !important; /* Borde sutilmente más claro */
+}

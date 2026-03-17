@@ -133,3 +133,67 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 1000);
   }
 });
+
+// --- 1. BARRA DE PROGRESO DE LECTURA ---
+const progressBar = document.getElementById("progress-bar");
+window.addEventListener("scroll", () => {
+  if (progressBar) {
+    let scrollTop = window.scrollY;
+    let docHeight = document.body.scrollHeight - window.innerHeight;
+    let scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + "%";
+  }
+});
+
+// --- 2. MODO OSCURO (Dark Mode) ---
+const themeBtn = document.getElementById("theme-toggle");
+const body = document.body;
+const themeIcon = themeBtn ? themeBtn.querySelector("i") : null;
+
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
+}
+
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      themeIcon.classList.replace("fa-moon", "fa-sun");
+    } else {
+      localStorage.setItem("theme", "light");
+      themeIcon.classList.replace("fa-sun", "fa-moon");
+    }
+  });
+}
+
+// --- 3. CURSOR PERSONALIZADO DINÁMICO ---
+const cursor = document.querySelector(".custom-cursor");
+if (cursor) {
+  document.addEventListener("mousemove", (e) => {
+    // Mueve el cursor a la posición del mouse
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  // Detectar elementos clickeables para agrandar el cursor
+  const clickables = document.querySelectorAll("a, button, .proyecto-card");
+  clickables.forEach((el) => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+  });
+}
+
+// --- 4. TOOLTIP DE WHATSAPP ---
+const waTooltip = document.querySelector(".wa-tooltip");
+if (waTooltip) {
+  // Que asome cada 20 segundos
+  setInterval(() => {
+    waTooltip.classList.add("show");
+    // Que se esconda después de 4 segundos
+    setTimeout(() => {
+      waTooltip.classList.remove("show");
+    }, 4000);
+  }, 20000);
+}
