@@ -843,3 +843,120 @@ footer p {
     left: 1.5rem;
   }
 }
+
+/* =========================================
+  RETOQUES INTERACTIVOS JS (AGREGADOS)
+========================================= */
+
+/* 1. Navbar Inteligente Dinámico */
+#navbar {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom-color: transparent !important;
+  transition: all 0.4s ease !important;
+}
+
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom-color: #dddddd !important;
+  padding: 1rem 2rem !important; /* Se achica sutilmente para dar más espacio visual */
+}
+
+/* 2. Cursor parpadeante para la Máquina de Escribir */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background-color: var(--accent-color);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* =========================================
+  RETOQUES ESTÉTICOS PREMIUM (AGREGADOS)
+========================================= */
+
+/* 1. TEXTO CON GRADIENTE EN EL TÍTULO PRINCIPAL */
+/* Pasa de ser un negro plano a un degradado sutil entre negro y tu púrpura, grita "Modernidad". */
+.hero-content h1 {
+  background: linear-gradient(135deg, var(--primary-text) 20%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-bottom: 5px; /* Evita que se corte la base de las letras */
+}
+
+/* 2. FONDO "TECH GRID" EN EL HERO */
+/* Agrega una cuadrícula muy suave de fondo. Es el estándar visual para desarrolladores y herramientas tech. */
+#hero {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
+  background-size: 30px 30px !important;
+  z-index: 1;
+}
+
+/* Difuminamos la cuadrícula hacia abajo para que se integre suave con el resto de la web */
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, var(--background-gradient-start), transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 3. EFECTO GLOW (RESPLANDOR) EN LOS BOTONES PRINCIPALES */
+/* En lugar de una sombra gris aburrida, le damos una sombra púrpura que lo hace "brillar". */
+.btn--primary {
+  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn--primary:hover {
+  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+/* 4. LÍNEA DE ACENTO DINÁMICA EN EL PORTFOLIO */
+/* Agrega una pequeña línea púrpura debajo de los títulos de tus proyectos que se expande al pasar el mouse. */
+.proyecto-info h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.proyecto-info h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.proyecto-card:hover .proyecto-info h3::after {
+  width: 100%; /* La línea crece al hacer hover en la tarjeta */
+}
