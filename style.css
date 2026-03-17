@@ -1,57 +1,43 @@
 /* --- VARIABLES DE MARCA GO WEB SOLUTIONS --- */
-
 :root {
-  /* Colores primarios */
-  --primary-text: #111111; /* Negro Profundo */
-  --secondary-text: #666666; /* Gris para párrafos */
-
-  /* Fondos */
-  --background-gradient-start: #f4f4f4; /* Gris Claro Suave */
-  --background-gradient-end: #fcfcfc; /* Casi Blanco */
-  --background-card: #ffffff; /* Blanco Puro para Tarjetas */
-  --background-dark: #111111; /* Fondo oscuro (footer) */
-
-  /* Color de acento (CTAs y detalles) */
-  --accent-color: #5e3b7d; /* Púrpura Profundo */
-  --accent-hover: #4a2e63; /* Púrpura un poco más oscuro para hover */
-
-  /* Tipografía */
+  --primary-text: #111111;
+  --secondary-text: #666666;
+  --background-gradient-start: #f4f4f4;
+  --background-gradient-end: #fcfcfc;
+  --background-card: #ffffff;
+  --background-dark: #111111;
+  --accent-color: #5e3b7d;
+  --accent-hover: #4a2e63;
   --font-stack: "Montserrat", sans-serif;
 }
 
 /* --- ESTILOS BASE Y SCROLLBAR PERSONALIZADO --- */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Scrollbar para Chrome, Edge y Safari */
 ::-webkit-scrollbar {
   width: 12px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--background-gradient-start); /* Color de fondo sutil */
+  background: var(--background-gradient-start);
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color); /* Tu color de marca */
-  border-radius: 10px; /* Bordes redondeados */
-  border: 3px solid var(--background-gradient-start); /* Espacio alrededor */
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  border: 3px solid var(--background-gradient-start);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent-hover); /* Color al pasar el mouse */
+  background-color: var(--accent-hover);
 }
 
-/* Scrollbar para Firefox */
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) var(--background-gradient-start);
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Para que el navbar no tape los títulos */
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -65,7 +51,6 @@ body {
 section {
   padding: 5rem 2rem;
 }
-
 h1,
 h2,
 h3 {
@@ -81,7 +66,6 @@ h3 {
 }
 
 /* --- ESTILO DE BOTONES --- */
-
 .btn {
   display: inline-block;
   padding: 0.8rem 2rem;
@@ -91,19 +75,24 @@ h3 {
   transition:
     background-color 0.3s,
     color 0.3s,
-    border-color 0.3s;
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
   border: 2px solid var(--accent-color);
 }
 
 .btn--primary {
   background-color: var(--accent-color);
   color: white;
+  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.25) !important;
 }
 
 .btn--primary:hover {
   background-color: var(--primary-text);
   border-color: var(--primary-text);
   color: white;
+  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.45) !important;
+  transform: translateY(-2px);
 }
 
 .btn--secondary {
@@ -120,7 +109,6 @@ h3 {
 }
 
 /* --- NAVBAR (Header) --- */
-
 #navbar {
   display: flex;
   justify-content: space-between;
@@ -129,12 +117,17 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.85); /* Glassmorphism: Blanco semi-transparente */
-  border-bottom: 1px solid #dddddd;
+  background-color: transparent !important;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.4s ease !important;
+}
 
-  /* Glassmorphism */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom-color: #dddddd !important;
+  padding: 1rem 2rem !important;
 }
 
 #navbar nav ul {
@@ -154,15 +147,8 @@ h3 {
 #navbar nav a:hover {
   color: var(--accent-color);
 }
-
 #navbar nav a.btn--primary {
   color: white;
-}
-
-#navbar nav a.btn--primary:hover {
-  color: white;
-  background-color: var(--primary-text);
-  border-color: var(--primary-text);
 }
 
 .hamburger {
@@ -184,7 +170,6 @@ h3 {
 }
 
 /* --- HERO SECTION --- */
-
 #hero {
   display: flex;
   align-items: center;
@@ -192,6 +177,24 @@ h3 {
   text-align: center;
   height: 90vh;
   padding: 0 2rem;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
+  background-size: 30px 30px !important;
+  z-index: 1;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, var(--background-gradient-start), transparent);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -201,7 +204,12 @@ h3 {
 
 .hero-content h1 {
   font-size: 3.5rem;
-  color: var(--primary-text);
+  background: linear-gradient(135deg, var(--primary-text) 20%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .hero-content .slogan {
@@ -212,15 +220,18 @@ h3 {
 }
 
 /* --- SERVICIOS SECTION --- */
-
-#servicios h2 {
+#servicios h2,
+#portfolio h2,
+#proceso h2,
+#testimonios h2 {
   text-align: center;
   font-size: 2.5rem;
   color: var(--primary-text);
   margin-bottom: 3rem;
 }
 
-.servicios-grid {
+.servicios-grid,
+.proceso-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
@@ -228,7 +239,8 @@ h3 {
   margin: 0 auto;
 }
 
-.servicio-item {
+.servicio-item,
+.proceso-paso {
   background-color: var(--background-card);
   border: 1px solid #e0e0e0;
   padding: 2.5rem;
@@ -239,31 +251,37 @@ h3 {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
 }
 
-.servicio-item:hover {
+.servicio-item:hover,
+.proceso-paso:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
-.servicio-item h3 {
+.servicio-item h3,
+.proceso-paso h3 {
   color: var(--accent-color);
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-
-/* Estilo para los iconos de servicios */
 .servicio-item h3 i {
   color: var(--accent-color);
   margin-right: 10px;
   font-size: 1.2em;
 }
-
-.servicio-item p {
+.servicio-item p,
+.proceso-paso p {
   color: var(--secondary-text);
   font-size: 1rem;
 }
 
-/* --- SOBRE MÍ SECTION --- */
+.paso-numero {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
 
+/* --- SOBRE MÍ SECTION --- */
 .sobre-mi-wrapper {
   background-color: var(--background-card);
   padding: 4rem;
@@ -279,50 +297,35 @@ h3 {
   align-items: center;
   gap: 4rem;
 }
-
 .sobre-mi-img img {
   border-radius: 50%;
   width: 250px;
   height: 250px;
   object-fit: cover;
-  object-position: top center;
-  display: block;
   margin: 0 auto;
+  display: block;
 }
-
 .sobre-mi-texto h2 {
   font-size: 2.5rem;
   color: var(--primary-text);
 }
-
 .sobre-mi-texto h3 {
   font-size: 1.5rem;
   color: var(--accent-color);
   font-weight: 600;
 }
-
 .sobre-mi-texto p {
   color: var(--secondary-text);
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
 .sobre-mi-texto .btn--secondary {
   margin-top: 1rem;
 }
 
 /* --- PORTFOLIO SECTION --- */
-
-#portfolio h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--primary-text);
-  margin-bottom: 3rem;
-}
-
 .portfolio-grid {
   display: grid;
-  /* ADAPTACIÓN PARA 4 COLUMNAS: Mínimo 280px para que entren 4 en 1200px */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
   max-width: 1200px;
@@ -334,7 +337,6 @@ h3 {
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  /* CLAVE para el bug del texto: Usamos Flex para que el contenido fluya verticalmente */
   display: flex;
   flex-direction: column;
   transition:
@@ -342,7 +344,6 @@ h3 {
     box-shadow 0.3s;
 }
 
-/* Contenedor que aísla la imagen/skeleton del resto del texto */
 .proyecto-img-container {
   height: 250px;
   width: 100%;
@@ -359,8 +360,6 @@ h3 {
   height: 250px;
   object-fit: contain;
   object-position: center top;
-
-  /* Estilos para el Skeleton Screen */
   position: absolute;
   top: 0;
   left: 0;
@@ -369,16 +368,13 @@ h3 {
   transition: opacity 0.5s ease;
 }
 
-/* Ocultar esqueleto y mostrar imagen real al cargar */
 .proyecto-card.loaded .skeleton-img {
   display: none;
 }
-
 .proyecto-card.loaded img {
   opacity: 1;
 }
 
-/* Esqueleto de Imagen para Prevenir Layout Shift */
 .skeleton-img {
   width: 100%;
   height: 250px;
@@ -397,13 +393,28 @@ h3 {
   flex-direction: column;
   flex-grow: 1;
 }
-
 .proyecto-info h3 {
   color: var(--primary-text);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
 }
-
+.proyecto-info h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.proyecto-card:hover .proyecto-info h3::after {
+  width: 100%;
+}
 .proyecto-info p {
   color: var(--secondary-text);
   font-size: 1rem;
@@ -411,70 +422,17 @@ h3 {
   flex-grow: 1;
 }
 
-/* --- ESTILO PARA TARJETA PRÓXIMAMENTE --- */
 .proyecto-proximamente {
   opacity: 0.8;
   filter: grayscale(0.5);
   cursor: default;
 }
-
 .proyecto-proximamente:hover {
   transform: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* --- PROCESO SECTION --- */
-
-#proceso h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--primary-text);
-  margin-bottom: 3rem;
-}
-
-.proceso-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.proceso-paso {
-  background-color: var(--background-card);
-  border: 1px solid #e0e0e0;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
-}
-
-.proceso-paso:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-}
-
-.paso-numero {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-}
-
-.proceso-paso h3 {
-  color: var(--primary-text);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.proceso-paso p {
-  color: var(--secondary-text);
-}
-
 /* --- CONTACTO SECTION --- */
-
 .contacto-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -492,24 +450,20 @@ h3 {
   font-size: 2.5rem;
   color: var(--primary-text);
 }
-
 .contacto-texto p {
   color: var(--secondary-text);
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
-
 .contacto-info {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
 .contacto-info span {
   font-weight: 600;
   color: var(--secondary-text);
 }
-
 .contacto-info span i {
   color: var(--accent-color);
   margin-right: 10px;
@@ -521,14 +475,12 @@ h3 {
   padding: 0;
   box-shadow: none;
 }
-
 .contacto-form label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   color: var(--primary-text);
 }
-
 .contacto-form input,
 .contacto-form textarea {
   width: 100%;
@@ -539,40 +491,27 @@ h3 {
   font-family: var(--font-stack);
   font-size: 1rem;
 }
-
 .contacto-form input:focus,
 .contacto-form textarea:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(94, 59, 125, 0.1);
 }
-
 .contacto-form input::placeholder,
 .contacto-form textarea::placeholder {
   color: #999;
   font-style: italic;
-  font-weight: 400;
 }
-
 .contacto-form button {
   width: 100%;
   font-size: 1.1rem;
 }
 
 /* --- TESTIMONIOS SECTION --- */
-
 #testimonios {
   background-color: var(--background-card);
   padding: 5rem 2rem;
 }
-
-#testimonios h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--primary-text);
-  margin-bottom: 3rem;
-}
-
 .testimonios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -580,7 +519,6 @@ h3 {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .testimonio-card {
   background-color: var(--background-gradient-start);
   border: 1px solid #e0e0e0;
@@ -594,18 +532,15 @@ h3 {
   display: flex;
   flex-direction: column;
 }
-
 .testimonio-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
-
 .testimonio-estrellas {
   color: var(--accent-color);
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
-
 .testimonio-texto {
   font-size: 1.1rem;
   font-style: italic;
@@ -613,14 +548,12 @@ h3 {
   margin-bottom: 1.5rem;
   flex-grow: 1;
 }
-
 .testimonio-autor {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary-text);
   margin-bottom: 0.25rem;
 }
-
 .testimonio-rol {
   font-size: 0.9rem;
   font-weight: 600;
@@ -628,7 +561,6 @@ h3 {
 }
 
 /* --- FOOTER --- */
-
 footer {
   background-color: var(--background-dark) !important;
   color: #ffffff !important;
@@ -637,12 +569,10 @@ footer {
   position: relative;
   z-index: 100;
 }
-
 footer .logo {
   margin-bottom: 1.5rem;
   display: inline-block;
 }
-
 footer .logo img {
   width: 70px;
   height: 70px;
@@ -651,23 +581,19 @@ footer .logo img {
     transform 0.3s ease,
     opacity 0.3s ease;
 }
-
 footer .logo img:hover {
   transform: scale(1.1);
   opacity: 0.9;
 }
-
 .footer-socials {
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
 }
-
 .footer-socials img {
   width: 35px;
   height: 35px;
-  background-color: transparent;
   opacity: 0.9;
   filter: brightness(1.2);
   transition:
@@ -675,20 +601,17 @@ footer .logo img:hover {
     opacity 0.3s ease,
     filter 0.3s ease;
 }
-
 .footer-socials img:hover {
   transform: scale(1.15);
   opacity: 1;
   filter: brightness(1.6);
 }
-
 footer p {
   color: #cccccc !important;
   margin-top: 1.5rem;
 }
 
 /* --- BOTÓN SCROLL TO TOP --- */
-
 #scrollToTopBtn {
   position: fixed;
   bottom: 2rem;
@@ -713,46 +636,17 @@ footer p {
     visibility 0.3s ease,
     transform 0.3s ease;
 }
-
 #scrollToTopBtn.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-
 #scrollToTopBtn:hover {
   background-color: var(--primary-text);
   transform: scale(1.1);
 }
 
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
-
-#whatsapp-btn {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem; /* Lo colocamos a la izquierda para que no choque con el botón de ScrollToTop */
-  z-index: 990;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366; /* Verde oficial de WhatsApp */
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-#whatsapp-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
 /* --- ANIMACIONES --- */
-
 @keyframes subtleFloat {
   0% {
     transform: translateY(0px);
@@ -764,8 +658,6 @@ footer p {
     transform: translateY(0px);
   }
 }
-
-/* Animación del efecto de carga (shimmer) */
 @keyframes loading-pulse {
   0% {
     background-position: 200% 0;
@@ -775,97 +667,6 @@ footer p {
   }
 }
 
-/* --- ESTILOS RESPONSIVE --- */
-
-@media (max-width: 900px) {
-  /* En móviles, la cuadrícula vuelve a 2 columnas para que no queden demasiado finas */
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  #navbar nav ul {
-    display: none;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--background-card);
-    width: 100%;
-    padding: 2rem 0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: none; /* Desactivar glassmorphism en el menú desplegable */
-    -webkit-backdrop-filter: none;
-  }
-
-  #navbar nav ul.show {
-    display: flex;
-  }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.2rem;
-  }
-
-  .sobre-mi-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .sobre-mi-wrapper {
-    padding: 2.5rem;
-  }
-
-  .sobre-mi-img img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .contacto-wrapper {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 2.5rem;
-  }
-
-  /* Ajuste de WhatsApp para móviles */
-  #whatsapp-btn {
-    width: 55px;
-    height: 55px;
-    font-size: 1.8rem;
-    bottom: 1.5rem;
-    left: 1.5rem;
-  }
-}
-
-/* =========================================
-  RETOQUES INTERACTIVOS JS (AGREGADOS)
-========================================= */
-
-/* 1. Navbar Inteligente Dinámico */
-#navbar {
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
-  transition: all 0.4s ease !important;
-}
-
-#navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom-color: #dddddd !important;
-  padding: 1rem 2rem !important; /* Se achica sutilmente para dar más espacio visual */
-}
-
-/* 2. Cursor parpadeante para la Máquina de Escribir */
 .typewriter-cursor {
   display: inline-block;
   width: 3px;
@@ -875,7 +676,6 @@ footer p {
   margin-left: 4px;
   animation: blink 0.8s infinite;
 }
-
 @keyframes blink {
   0%,
   100% {
@@ -886,86 +686,7 @@ footer p {
   }
 }
 
-/* =========================================
-  RETOQUES ESTÉTICOS PREMIUM (AGREGADOS)
-========================================= */
-
-/* 1. TEXTO CON GRADIENTE EN EL TÍTULO PRINCIPAL */
-/* Pasa de ser un negro plano a un degradado sutil entre negro y tu púrpura, grita "Modernidad". */
-.hero-content h1 {
-  background: linear-gradient(135deg, var(--primary-text) 20%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-  padding-bottom: 5px; /* Evita que se corte la base de las letras */
-}
-
-/* 2. FONDO "TECH GRID" EN EL HERO */
-/* Agrega una cuadrícula muy suave de fondo. Es el estándar visual para desarrolladores y herramientas tech. */
-#hero {
-  position: relative;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
-  background-size: 30px 30px !important;
-  z-index: 1;
-}
-
-/* Difuminamos la cuadrícula hacia abajo para que se integre suave con el resto de la web */
-#hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(to top, var(--background-gradient-start), transparent);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* 3. EFECTO GLOW (RESPLANDOR) EN LOS BOTONES PRINCIPALES */
-/* En lugar de una sombra gris aburrida, le damos una sombra púrpura que lo hace "brillar". */
-.btn--primary {
-  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.25) !important;
-  transition: all 0.3s ease !important;
-}
-
-.btn--primary:hover {
-  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.45) !important;
-  transform: translateY(-2px);
-}
-
-/* 4. LÍNEA DE ACENTO DINÁMICA EN EL PORTFOLIO */
-/* Agrega una pequeña línea púrpura debajo de los títulos de tus proyectos que se expande al pasar el mouse. */
-.proyecto-info h3 {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
-}
-
-.proyecto-info h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30px;
-  height: 3px;
-  background-color: var(--accent-color);
-  border-radius: 2px;
-  transition: width 0.4s ease;
-}
-
-.proyecto-card:hover .proyecto-info h3::after {
-  width: 100%; /* La línea crece al hacer hover en la tarjeta */
-}
-
-/* =========================================
-  RETOQUES: DARK MODE, CURSOR, PROGRESO Y WA
-========================================= */
-
-/* 1. Barra de Progreso */
+/* --- BARRA DE PROGRESO --- */
 #progress-bar {
   position: fixed;
   top: 0;
@@ -978,7 +699,39 @@ footer p {
   border-radius: 0 2px 2px 0;
 }
 
-/* 2. Botón y Variables del MODO OSCURO */
+/* --- CURSOR PERSONALIZADO DINÁMICO --- */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10000;
+    transition:
+      transform 0.15s ease-out,
+      background-color 0.15s,
+      border-color 0.15s;
+  }
+  .custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(2.2);
+    background-color: rgba(94, 59, 125, 0.15);
+    border-color: rgba(94, 59, 125, 0.4);
+  }
+  input,
+  textarea {
+    cursor: text;
+  }
+}
+
+/* --- MODO OSCURO (Dark Mode) --- */
 #theme-toggle {
   background: none;
   border: none;
@@ -998,183 +751,120 @@ body.dark-mode {
   --background-gradient-start: #111111;
   --background-gradient-end: #1a1a1a;
   --background-card: #222222;
-}
-body.dark-mode #navbar {
-  border-bottom-color: #333333 !important;
-}
-body.dark-mode .contacto-form input,
-body.dark-mode .contacto-form textarea {
-  background-color: #333;
-  color: #fff;
-  border-color: #444;
-}
-
-body.dark-mode #navbar.scrolled {
-  background-color: rgba(17, 17, 17, 0.9) !important; /* Negro semi-transparente */
-  border-bottom-color: #333333 !important;
-}
-
-/* 3. Cursor Personalizado Dinámico (Solo en PC) */
-@media (pointer: fine) {
-  body {
-    cursor: none; /* Oculta el cursor nativo */
-  }
-  .custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--accent-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none; /* Para que no interfiera con los clics */
-    z-index: 10000;
-    transition:
-      transform 0.15s ease-out,
-      background-color 0.15s,
-      border-color 0.15s;
-    /* Eliminamos el backdrop-filter para que no haga borroso el fondo */
-  }
-
-  /* Estado cuando pasa por un enlace, botón o tarjeta */
-  .custom-cursor.hover {
-    transform: translate(-50%, -50%) scale(2.2); /* Lo hacemos un pelín más grande */
-    background-color: rgba(94, 59, 125, 0.15); /* Púrpura súper traslúcido (15% de opacidad) */
-    border-color: rgba(94, 59, 125, 0.4); /* Borde un poco más suave */
-  }
-
-  /* Mantener cursor original en inputs para poder escribir bien */
-  input,
-  textarea {
-    cursor: text;
-  }
-}
-/* 4. Tooltip WhatsApp */
-.wa-tooltip {
-  position: absolute;
-  right: 80px; /* Aparece a la izquierda del logo de WP */
-  top: 50%;
-  transform: translateY(-50%) scale(0.9);
-  background-color: var(--background-card);
-  color: var(--primary-text);
-  padding: 8px 15px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-.wa-tooltip::after {
-  content: "";
-  position: absolute;
-  right: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-width: 6px 0 6px 6px;
-  border-style: solid;
-  border-color: transparent transparent transparent var(--background-card);
-}
-.wa-tooltip.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) scale(1);
-}
-
-/* =========================================
-  RETOQUE ESTÉTICO: MODO OSCURO CONTACTO
-========================================= */
-
-/* 1. Fondo del Body y Gradiente al scrollear (Garantía) */
-body.dark-mode {
   background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%) !important;
   background-attachment: fixed !important;
 }
 
-/* 2. La Tarjeta de Contacto (Gris Oscuro con Grid) */
+body.dark-mode #navbar.scrolled {
+  background-color: rgba(17, 17, 17, 0.9) !important;
+  border-bottom-color: #333333 !important;
+}
 body.dark-mode .contacto-wrapper {
-  background-color: #222222 !important; /* Fondo de la tarjeta */
-  border-color: #333333 !important; /* Borde sutil */
+  background-color: #222222 !important;
+  border-color: #333333 !important;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
   background-size: 30px 30px !important;
 }
 
-/* 3. Título Principal (Degradado Púrpura/Violeta) */
 body.dark-mode .contacto-texto h2 {
   background: linear-gradient(135deg, #5e3b7d 20%, #a275ca 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* 4. Descripciones y Labels (Texto Claro) */
 body.dark-mode .contacto-texto p,
 body.dark-mode .contacto-info span,
 body.dark-mode .contacto-form label {
-  color: #eeeeee !important; /* Texto muy claro para legibilidad */
+  color: #eeeeee !important;
 }
-
-/* 5. Inputs y Textarea (Fondo oscuro, Borde claro y Texto Claro) */
 body.dark-mode .contacto-form input,
 body.dark-mode .contacto-form textarea {
   background-color: #333333 !important;
-  color: #ffffff !important; /* Textotyped */
+  color: #ffffff !important;
   border-color: #444444 !important;
 }
-
-/* Texto placeholder (gris claro) */
 body.dark-mode .contacto-form input::placeholder,
 body.dark-mode .contacto-form textarea::placeholder {
   color: #a0a0a0 !important;
 }
-
-/* Inputs en FOCO (Fuerte Borde y Resplandor) */
 body.dark-mode .contacto-form input:focus,
 body.dark-mode .contacto-form textarea:focus {
-  border-color: #5e3b7d !important; /* Color de acento */
-  box-shadow: 0 0 12px rgba(94, 59, 125, 0.45) !important; /* Efecto Glow */
+  border-color: #5e3b7d !important;
+  box-shadow: 0 0 12px rgba(94, 59, 125, 0.45) !important;
 }
 
-/* 6. Botón Enviar (Muy visible y con Resplandor) */
+/* Botones en Dark Mode */
+body.dark-mode .btn--primary,
 body.dark-mode .contacto-form button {
-  background-color: #5e3b7d !important; /* Color púrpura rico */
+  background-color: #5e3b7d !important;
   color: white !important;
-  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.3) !important; /* Glow sutil */
+  box-shadow: 0 4px 15px rgba(94, 59, 125, 0.3) !important;
   border: none !important;
 }
-
-/* Hover en Botón (Más Glow) */
+body.dark-mode .btn--primary:hover,
 body.dark-mode .contacto-form button:hover {
-  background-color: #111111 !important; /* Negro Profundo al pasar */
-  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.5) !important; /* Glow fuerte */
-  color: white !important;
-}
-
-/* =========================================
-  RETOQUES FINALES: BOTONES Y TARJETAS EN DARK MODE
-========================================= */
-
-/* 1. Todos los botones principales iguales al hacer Hover en Dark Mode */
-body.dark-mode .btn--primary:hover {
-  background-color: #111111 !important; /* Se pone casi negro */
+  background-color: #111111 !important;
   border-color: #111111 !important;
-  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.6) !important; /* Glow púrpura fuerte */
+  box-shadow: 0 8px 25px rgba(94, 59, 125, 0.6) !important;
   color: #ffffff !important;
-  transform: translateY(-2px) !important; /* Saltito hacia arriba */
+  transform: translateY(-2px) !important;
 }
 
-/* 2. Recuperar el efecto Hover de las Tarjetas en Dark Mode */
-/* Como la sombra negra no se ve, le damos una sombra púrpura súper elegante y aclaramos el borde */
+/* Tarjetas en Dark Mode */
 body.dark-mode .servicio-item:hover,
 body.dark-mode .proyecto-card:hover,
 body.dark-mode .proceso-paso:hover,
 body.dark-mode .testimonio-card:hover {
-  transform: translateY(-10px) !important; /* El salto hacia arriba */
-  box-shadow: 0 12px 30px rgba(94, 59, 125, 0.2) !important; /* Sombra púrpura mágica */
-  border-color: #444444 !important; /* Borde sutilmente más claro */
+  transform: translateY(-10px) !important;
+  box-shadow: 0 12px 30px rgba(94, 59, 125, 0.2) !important;
+  border-color: #444444 !important;
+}
+
+/* --- ESTILOS RESPONSIVE --- */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .hamburger {
+    display: flex;
+  }
+  #navbar nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--background-card);
+    width: 100%;
+    padding: 2rem 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  #navbar nav ul.show {
+    display: flex;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  .sobre-mi-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .sobre-mi-wrapper {
+    padding: 2.5rem;
+  }
+  .sobre-mi-img img {
+    width: 200px;
+    height: 200px;
+  }
+  .contacto-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
 }

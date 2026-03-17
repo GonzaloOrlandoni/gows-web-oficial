@@ -12,11 +12,12 @@
 
 Este repositorio aloja el sitio web oficial de **GO Web Solutions**. Funciona como un **Caso de Estudio** integral que demuestra habilidades avanzadas en diseño UX/UI, desarrollo frontend modular, optimizaciones técnicas y atención al detalle (micro-interacciones). El objetivo es transformar visitantes en clientes mediante una interfaz moderna, inmersiva y performante.
 
-### ✨ Features Destacadas (Premium UI/UX)
+### ✨ Features Destacadas (Premium UI/UX & Automatización)
 
 - **Dark Mode Inteligente:** Implementación nativa con variables CSS y persistencia de preferencias del usuario mediante `localStorage`.
 - **Cursor Dinámico Personalizado:** Reemplazo del cursor nativo con un elemento interactivo translúcido que reacciona al hacer hover sobre elementos clickeables, mejorando la inmersión.
 - **Micro-interacciones:** Barra de progreso de lectura vinculada al scroll y animaciones 3D (Tilt) en tarjetas de proyectos.
+- **Lead Generation Automatizado:** Formulario de contacto desacoplado e integrado vía **Webhooks** con ecosistema **n8n Cloud**, permitiendo una gestión de clientes asincrónica, escalable y profesional.
 - **Technical SEO & SMO:** Implementación de etiquetas _Open Graph_ y _Twitter Cards_ para previsualizaciones perfectas al compartir enlaces en redes.
 - **Developer Easter Egg:** Mensaje oculto en la consola del navegador para interactuar con reclutadores y colegas técnicos.
 
@@ -28,6 +29,7 @@ Este repositorio aloja el sitio web oficial de **GO Web Solutions**. Funciona co
 | **Estilos Avanzados** | Uso de **SASS** para proyectos escalables y mantenibles.                              |
 | **Interactividad**    | JavaScript (ES6+) para manipulación avanzada del DOM, Theme Switching y lógica de UI. |
 | **Experiencia (UX)**  | Animaciones **AOS**, Glassmorphism dinámico y diseño **Fully Responsive**.            |
+| **Automatización**    | Preparado para flujos de trabajo API REST y Webhooks hacia **n8n Cloud** (CRM).       |
 | **Optimización**      | Lazy Loading, SEO técnico y Metadatos Open Graph.                                     |
 
 ---
