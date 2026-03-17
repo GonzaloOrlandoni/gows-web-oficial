@@ -88,7 +88,10 @@ h3 {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
   border: 2px solid var(--accent-color);
 }
 
@@ -230,7 +233,9 @@ h3 {
   border: 1px solid #e0e0e0;
   padding: 2.5rem;
   border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
 }
 
@@ -332,7 +337,9 @@ h3 {
   /* CLAVE para el bug del texto: Usamos Flex para que el contenido fluya verticalmente */
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 /* Contenedor que aísla la imagen/skeleton del resto del texto */
@@ -439,7 +446,9 @@ h3 {
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .proceso-paso:hover {
@@ -579,7 +588,9 @@ h3 {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
@@ -636,7 +647,9 @@ footer .logo img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 footer .logo img:hover {
@@ -657,7 +670,10 @@ footer .logo img:hover {
   background-color: transparent;
   opacity: 0.9;
   filter: brightness(1.2);
-  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
 .footer-socials img:hover {
@@ -692,7 +708,10 @@ footer p {
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
 }
 
 #scrollToTopBtn.show {
