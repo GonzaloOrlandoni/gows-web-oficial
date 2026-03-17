@@ -2,25 +2,33 @@
 
 ## Sitio Web Oficial de Gonzalo Orlandoni
 
-![Captura de la página de inicio de GO Web Solutions](img/preview-image.png)
+[![Captura de la página de inicio de GO Web Solutions](img/preview-image.png)](https://gows-web-oficial.vercel.app/)
 
-**Sitio en Vivo:** [https://gonzaloorlandoni.github.io/go-web-solutions/](https://gonzaloorlandoni.github.io/gows-web-oficial/)
+**Sitio en Vivo:** [https://gows-web-oficial.vercel.app/](https://gows-web-oficial.vercel.app/)
 
 ---
 
 ## 🎯 OBJETIVO: Marca Personal y Portafolio Técnico
 
-Este repositorio aloja el sitio web oficial de **GO Web Solutions**. Funciona como un **Caso de Estudio** integral que demuestra habilidades en diseño UX/UI, desarrollo frontend modular y optimización web. El objetivo es transformar visitantes en clientes mediante una interfaz moderna y performante.
+Este repositorio aloja el sitio web oficial de **GO Web Solutions**. Funciona como un **Caso de Estudio** integral que demuestra habilidades avanzadas en diseño UX/UI, desarrollo frontend modular, optimizaciones técnicas y atención al detalle (micro-interacciones). El objetivo es transformar visitantes en clientes mediante una interfaz moderna, inmersiva y performante.
+
+### ✨ Features Destacadas (Premium UI/UX)
+
+- **Dark Mode Inteligente:** Implementación nativa con variables CSS y persistencia de preferencias del usuario mediante `localStorage`.
+- **Cursor Dinámico Personalizado:** Reemplazo del cursor nativo con un elemento interactivo translúcido que reacciona al hacer hover sobre elementos clickeables, mejorando la inmersión.
+- **Micro-interacciones:** Barra de progreso de lectura vinculada al scroll y animaciones 3D (Tilt) en tarjetas de proyectos.
+- **Technical SEO & SMO:** Implementación de etiquetas _Open Graph_ y _Twitter Cards_ para previsualizaciones perfectas al compartir enlaces en redes.
+- **Developer Easter Egg:** Mensaje oculto en la consola del navegador para interactuar con reclutadores y colegas técnicos.
 
 ### 🌐 Stack Tecnológico y Habilidades
 
-| Área de Foco          | Implementación Técnica                                                |
-| :-------------------- | :-------------------------------------------------------------------- |
-| **Arquitectura**      | HTML5 Semántico y **CSS3 Modular** (Variables CSS + Flexbox/Grid).    |
-| **Estilos Avanzados** | Uso de **SASS** para proyectos escalables y mantenibles.              |
-| **Interactividad**    | JavaScript (ES6+) para manipulación del DOM y lógica de negocio.      |
-| **Experiencia (UX)**  | Animaciones **AOS**, navegación fluida y diseño **Fully Responsive**. |
-| **Optimización**      | Lazy Loading, SEO técnico y Metadatos Open Graph.                     |
+| Área de Foco          | Implementación Técnica                                                                |
+| :-------------------- | :------------------------------------------------------------------------------------ |
+| **Arquitectura**      | HTML5 Semántico y **CSS3 Modular** (Variables CSS + Flexbox/Grid).                    |
+| **Estilos Avanzados** | Uso de **SASS** para proyectos escalables y mantenibles.                              |
+| **Interactividad**    | JavaScript (ES6+) para manipulación avanzada del DOM, Theme Switching y lógica de UI. |
+| **Experiencia (UX)**  | Animaciones **AOS**, Glassmorphism dinámico y diseño **Fully Responsive**.            |
+| **Optimización**      | Lazy Loading, SEO técnico y Metadatos Open Graph.                                     |
 
 ---
 
@@ -65,4 +73,4 @@ Si deseas clonar este repositorio para ver el código fuente:
 
 ### **Desarrollado y Mantenido por Gonzalo Orlandoni.**
 
-_Founder & CEO de GO Web Solutions._
+_Founder & CEO de GO Web Solutions._ | 📧 gowebsolutions4@gmail.com

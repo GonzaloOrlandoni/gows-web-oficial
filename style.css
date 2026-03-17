@@ -1034,21 +1034,22 @@ body.dark-mode #navbar.scrolled {
       transform 0.15s ease-out,
       background-color 0.15s,
       border-color 0.15s;
-    backdrop-filter: blur(2px);
+    /* Eliminamos el backdrop-filter para que no haga borroso el fondo */
   }
+
   /* Estado cuando pasa por un enlace, botón o tarjeta */
   .custom-cursor.hover {
-    transform: translate(-50%, -50%) scale(1.8);
-    background-color: rgba(94, 59, 125, 0.1);
-    border-color: rgba(94, 59, 125, 0.5);
+    transform: translate(-50%, -50%) scale(2.2); /* Lo hacemos un pelín más grande */
+    background-color: rgba(94, 59, 125, 0.15); /* Púrpura súper traslúcido (15% de opacidad) */
+    border-color: rgba(94, 59, 125, 0.4); /* Borde un poco más suave */
   }
+
   /* Mantener cursor original en inputs para poder escribir bien */
   input,
   textarea {
     cursor: text;
   }
 }
-
 /* 4. Tooltip WhatsApp */
 .wa-tooltip {
   position: absolute;

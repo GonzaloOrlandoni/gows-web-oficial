@@ -196,4 +196,16 @@ if (waTooltip) {
       waTooltip.classList.remove("show");
     }, 4000);
   }, 20000);
+  // --- 5. EASTER EGG PARA CONSOLA (Reclutadores y Devs) ---
+  const easterEggStyle1 = "color: #5e3b7d; font-size: 24px; font-weight: bold; font-family: 'Montserrat', sans-serif;";
+  const easterEggStyle2 = "color: #a0a0a0; font-size: 14px; font-family: monospace; line-height: 1.5;";
+  const easterEggStyle3 =
+    "color: #ffffff; background-color: #5e3b7d; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: bold;";
+
+  console.log("%c🚀 ¡Hola, colega dev / reclutador!", easterEggStyle1);
+  console.log(
+    "%cVeo que te gusta inspeccionar el código (a mí también 👀). \nSi estás buscando un desarrollador frontend que cuide la performance, la estética y los detalles de UI/UX, estás en el lugar correcto.",
+    easterEggStyle2,
+  );
+  console.log("%cEscribime a gowebsolutions4@gmail.com y hablemos de negocios. ☕", easterEggStyle3);
 }
