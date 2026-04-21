@@ -29,7 +29,7 @@
       content="Desarrollo Web a medida. Creación de Landing Pages, E-commerce y soluciones digitales escalables. Por Gonzalo Orlandoni."
     />
     <meta property="og:url" content="https://gows-web-oficial.vercel.app/" />
-    <meta property="og:image" content="https://gows-web-oficial.vercel.app/img/preview-image.png" />
+    <meta property="og:image" content="https://gows-web-oficial.vercel.app/img/preview-image.webp" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="GO Web Solutions | Soluciones Web" />
@@ -37,9 +37,11 @@
       name="twitter:description"
       content="Transformo ideas en negocios que venden. Desarrollo Web Front-End y Soluciones Digitales."
     />
-    <meta name="twitter:image" content="https://gows-web-oficial.vercel.app/img/preview-image.png" />
+    <meta name="twitter:image" content="https://gows-web-oficial.vercel.app/img/preview-image.webp" />
 
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="icon" type="image/png" href="img/favicon.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
       rel="stylesheet"
@@ -60,7 +62,7 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "GO Web Solutions",
-        "image": "https://gows-web-oficial.vercel.app/img/preview-image.png",
+        "image": "https://gows-web-oficial.vercel.app/img/preview-image.webp",
         "@id": "https://gows-web-oficial.vercel.app/",
         "url": "https://gows-web-oficial.vercel.app/",
         "address": {
@@ -75,6 +77,7 @@
       }
     </script>
   </head>
+
   <body>
     <div id="progress-bar"></div>
     <div class="custom-cursor"></div>
@@ -121,8 +124,34 @@
         </div>
       </section>
 
+      <!-- TECNOLOGÍAS (Marquee) -->
+      <section id="tech-stack" class="tech-marquee-container">
+        <div class="tech-marquee">
+          <div class="tech-marquee-content">
+            <!-- Duplicamos los iconos para lograr el efecto infinito -->
+            <i class="fa-brands fa-html5" style="color: #e34f26"></i><span>HTML5</span>
+            <i class="fa-brands fa-css3-alt" style="color: #1572b6"></i><span>CSS3</span>
+            <i class="fa-brands fa-js" style="color: #f7df1e"></i><span>JavaScript</span>
+            <i class="fa-brands fa-react" style="color: #61dafb"></i><span>React</span>
+            <i class="fa-brands fa-node-js" style="color: #339933"></i><span>Node.js</span>
+            <i class="fa-brands fa-sass" style="color: #cc6699"></i><span>SASS</span>
+            <i class="fa-brands fa-figma" style="color: #f24e1e"></i><span>Figma</span>
+            <i class="fa-brands fa-git-alt" style="color: #f05032"></i><span>Git</span>
+
+            <i class="fa-brands fa-html5" style="color: #e34f26"></i><span>HTML5</span>
+            <i class="fa-brands fa-css3-alt" style="color: #1572b6"></i><span>CSS3</span>
+            <i class="fa-brands fa-js" style="color: #f7df1e"></i><span>JavaScript</span>
+            <i class="fa-brands fa-react" style="color: #61dafb"></i><span>React</span>
+            <i class="fa-brands fa-node-js" style="color: #339933"></i><span>Node.js</span>
+            <i class="fa-brands fa-sass" style="color: #cc6699"></i><span>SASS</span>
+            <i class="fa-brands fa-figma" style="color: #f24e1e"></i><span>Figma</span>
+            <i class="fa-brands fa-git-alt" style="color: #f05032"></i><span>Git</span>
+          </div>
+        </div>
+      </section>
+
       <section id="servicios">
-        <h2 data-aos="fade-up">Nuestros Servicios</h2>
+        <h2 data-aos="fade-up">Mis Servicios</h2>
         <div class="servicios-grid">
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="100">
             <h3><i class="fas fa-desktop"></i> Diseño y Desarrollo Web</h3>
@@ -152,7 +181,7 @@
           <div class="sobre-mi-grid">
             <div class="sobre-mi-img">
               <img
-                src="img/fotosobremi.png"
+                src="img/fotosobremi.webp"
                 alt="Foto de Gonzalo Orlandoni, Founder & CEO de GO Web Solutions"
                 loading="lazy"
               />
@@ -168,7 +197,16 @@
                 Me especializo en transformar ideas en código limpio, mantenible y optimizado, ayudando a negocios y
                 profesionales a escalar en el mundo digital.
               </p>
-              <a href="#contacto" class="btn btn--secondary">Hablemos</a>
+              <div class="sobre-mi-botones">
+                <a href="#contacto" class="btn btn--secondary">Hablemos</a>
+                <a
+                  href="#"
+                  class="btn btn--primary"
+                  target="_blank"
+                  onclick="showToast('El CV se descargará en breve.', 'info')"
+                  ><i class="fas fa-download"></i> Descargar CV</a
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -180,63 +218,97 @@
           <div class="proyecto-card" data-aos="fade-up" data-aos-delay="100">
             <div class="proyecto-img-container">
               <div class="skeleton-img"></div>
-              <img src="img/proyecto-fitlab.png" alt="Vista previa de FitLab Landing Page" loading="lazy" />
+              <img src="img/proyecto-fitlab.webp" alt="Vista previa de FitLab Landing Page" loading="lazy" />
             </div>
             <div class="proyecto-info">
               <h3>FitLab (UX & Conversión)</h3>
               <p>Landing page profesional enfocada 100% en la conversión de clientes para el sector fitness.</p>
-              <a href="https://demo-fitlab-landing-page.vercel.app/" class="btn btn--secondary" target="_blank"
-                >Ver Demo</a
-              >
+              <div class="tech-badges">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+              </div>
+              <div class="proyecto-botones">
+                <a href="https://demo-fitlab-landing-page.vercel.app/" class="btn btn--secondary" target="_blank"
+                  >Ver Demo</a
+                >
+                <a href="https://github.com/GonzaloOrlandoni" class="btn-icon" target="_blank" title="Ver Código"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </div>
             </div>
           </div>
 
           <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200">
             <div class="proyecto-img-container">
               <div class="skeleton-img"></div>
-              <img src="img/proyecto-constructora.png" alt="Web Corporativa GO Construcciones" loading="lazy" />
+              <img src="img/proyecto-constructora.webp" alt="Web Corporativa GO Construcciones" loading="lazy" />
             </div>
             <div class="proyecto-info">
-              <h3>Web Corporativa (SASS)</h3>
+              <h3>Web Corporativa</h3>
               <p>
-                Sitio institucional para constructora con diseño de alto nivel. Arquitectura CSS modular (SASS) y
-                componentes UI orientados a generar confianza.
+                Sitio institucional para constructora con diseño de alto nivel. Arquitectura CSS modular y componentes
+                UI.
               </p>
-              <a
-                href="https://web-corporativa-constructora-mf1c0k93f.vercel.app"
-                class="btn btn--secondary"
-                target="_blank"
-                >Ver Demo</a
-              >
+              <div class="tech-badges">
+                <span class="badge">SASS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Figma</span>
+              </div>
+              <div class="proyecto-botones">
+                <a
+                  href="https://web-corporativa-constructora-mf1c0k93f.vercel.app"
+                  class="btn btn--secondary"
+                  target="_blank"
+                  >Ver Demo</a
+                >
+                <a href="https://github.com/GonzaloOrlandoni" class="btn-icon" target="_blank" title="Ver Código"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </div>
             </div>
           </div>
 
           <div class="proyecto-card" data-aos="fade-up" data-aos-delay="300">
             <div class="proyecto-img-container">
               <div class="skeleton-img"></div>
-              <img src="img/ecommercegows.png" alt="Vista previa GOWS Hardware" loading="lazy" />
+              <img src="img/ecommercegows.webp" alt="Vista previa GOWS Hardware" loading="lazy" />
             </div>
             <div class="proyecto-info">
-              <h3>GOWS Hardware (Full Stack)</h3>
-              <p>
-                Plataforma completa: Armador de PC inteligente, Carrito persistente, Checkout a WhatsApp y PDF. (Next.js
-                + Tailwind).
-              </p>
-              <a href="https://gowshardware.vercel.app/" class="btn btn--secondary" target="_blank">Ver Demo</a>
+              <h3>GOWS Hardware</h3>
+              <p>Plataforma completa: Armador de PC, Carrito persistente y Checkout a WhatsApp.</p>
+              <div class="tech-badges">
+                <span class="badge">Next.js</span>
+                <span class="badge">Tailwind</span>
+                <span class="badge">React</span>
+              </div>
+              <div class="proyecto-botones">
+                <a href="https://gowshardware.vercel.app/" class="btn btn--secondary" target="_blank">Ver Demo</a>
+                <a href="https://github.com/GonzaloOrlandoni" class="btn-icon" target="_blank" title="Ver Código"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </div>
             </div>
           </div>
 
           <div class="proyecto-card proyecto-proximamente" data-aos="fade-up" data-aos-delay="400">
             <div class="proyecto-img-container">
               <div class="skeleton-img"></div>
-              <img src="img/gowsperfumerie.jpg" alt="GOWS Perfumerie Próximamente" loading="lazy" />
+              <img src="img/gowsperfumerie.webp" alt="GOWS Perfumerie Próximamente" loading="lazy" />
             </div>
             <div class="proyecto-info">
-              <h3>GOWS Perfumerie (Próximamente)</h3>
+              <h3>GOWS Perfumerie</h3>
               <p>
                 El mismo motor de e-commerce Full Stack, adaptado para el sector de perfumería de lujo y cosméticos.
               </p>
-              <a href="#" class="btn btn--secondary" onclick="mostrarProximamente(event)">Ver Demo</a>
+              <div class="tech-badges">
+                <span class="badge">Next.js</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">PostgreSQL</span>
+              </div>
+              <div class="proyecto-botones">
+                <a href="#" class="btn btn--secondary" onclick="mostrarProximamente(event)">Ver Demo</a>
+              </div>
             </div>
           </div>
         </div>
@@ -363,18 +435,21 @@
 
     <footer>
       <a href="#" class="logo">
-        <img src="img/logofooter.png" alt="Logo GO Web Solutions - Volver al inicio" loading="lazy" />
+        <img src="img/logofooter.webp" alt="Logo GO Web Solutions - Volver al inicio" loading="lazy" />
       </a>
       <div class="footer-socials">
         <a href="https://github.com/GonzaloOrlandoni?tab=repositories" target="_blank" aria-label="Perfil de GitHub">
-          <img src="img/logogithub.png" alt="Logo GitHub" loading="lazy" />
+          <img src="img/logogithub.webp" alt="Logo GitHub" loading="lazy" />
         </a>
         <a href="https://www.linkedin.com/in/gonzalo-orlandoni/" target="_blank" aria-label="Perfil de LinkedIn">
-          <img src="img/logolinkedin.png" alt="Logo LinkedIn" loading="lazy" />
+          <img src="img/logolinkedin.webp" alt="Logo LinkedIn" loading="lazy" />
         </a>
       </div>
       <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
     </footer>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div id="toast-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

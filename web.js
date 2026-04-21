@@ -15,6 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // --- 2.1 Menú Hamburguesa (Móvil) ---
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector("#nav-links");
+  const navItems = document.querySelectorAll("#nav-links li a");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navLinks.classList.toggle("show");
+    });
+
+    // Cerrar menú al hacer click en una opción
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("show");
+      });
+    });
+  }
+
   // --- 3. Scroll to Top Botón ---
   const scrollBtn = document.querySelector("#scrollToTopBtn");
   window.addEventListener("scroll", () => {
@@ -50,10 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 6. Formulario Asíncrono (Preparado para n8n) ---
   const form = document.querySelector(".contacto-form");
   const status = document.querySelector("#form-status");
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      status.innerHTML = "Enviando...";
+
+      // Estado de carga (Loading)
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      }
+      status.innerHTML = "";
+
       const data = new FormData(form);
       try {
         const response = await fetch(form.action, {
@@ -61,14 +90,21 @@ document.addEventListener("DOMContentLoaded", () => {
           body: data,
           headers: { Accept: "application/json" },
         });
+
         if (response.ok) {
-          status.innerHTML = "✅ ¡Mensaje enviado con éxito!";
+          showToast("¡Mensaje enviado con éxito! Te responderé a la brevedad.", "success");
           form.reset();
         } else {
-          status.innerHTML = "❌ Hubo un error al enviar. Intentá nuevamente.";
+          showToast("Hubo un error al enviar. Intentá nuevamente.", "error");
         }
       } catch (error) {
-        status.innerHTML = "❌ Error de conexión.";
+        showToast("Error de conexión. Verifica tu internet.", "error");
+      } finally {
+        // Restaurar estado del botón
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "Enviar Mensaje";
+        }
       }
     });
   }
@@ -131,10 +167,53 @@ document.addEventListener("DOMContentLoaded", () => {
 //  LÓGICA GLOBAL (Fuera del DOMContentLoaded)
 // =========================================
 
+// Sistema de Notificaciones Toast Personalizado
+function showToast(message, type = "info") {
+  const container = document.getElementById("toast-container");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+
+  // Iconos basados en tipo
+  let icon = '<i class="fas fa-info-circle"></i>';
+  if (type === "success") icon = '<i class="fas fa-check-circle"></i>';
+  if (type === "error") icon = '<i class="fas fa-exclamation-circle"></i>';
+  if (type === "tech") icon = '<i class="fas fa-rocket"></i>';
+
+  toast.innerHTML = `
+    <div class="toast-icon">${icon}</div>
+    <div class="toast-message">${message}</div>
+    <button class="toast-close"><i class="fas fa-times"></i></button>
+  `;
+
+  container.appendChild(toast);
+
+  // Animación de entrada
+  setTimeout(() => toast.classList.add("show"), 10);
+
+  // Auto-cerrar después de 4 segundos
+  const timeout = setTimeout(() => closeToast(toast), 4000);
+
+  // Botón cerrar
+  toast.querySelector(".toast-close").addEventListener("click", () => {
+    clearTimeout(timeout);
+    closeToast(toast);
+  });
+}
+
+function closeToast(toast) {
+  toast.classList.remove("show");
+  toast.classList.add("hide");
+  toast.addEventListener("transitionend", () => {
+    toast.remove();
+  });
+}
+
 // Proyectos próximamente
 function mostrarProximamente(e) {
   e.preventDefault();
-  alert("🚀 ¡GOWS Perfumerie está en desarrollo!");
+  showToast("¡GOWS Perfumerie está actualmente en desarrollo! Estará disponible pronto.", "tech");
 }
 
 // Barra de progreso de lectura

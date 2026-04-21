@@ -2,7 +2,7 @@
 
 ## Sitio Web Oficial de Gonzalo Orlandoni
 
-[![Captura de la página de inicio de GO Web Solutions](img/preview-image.png)](https://gows-web-oficial.vercel.app/)
+[![Captura de la página de inicio de GO Web Solutions](img/preview-image.webp)](https://gows-web-oficial.vercel.app/)
 
 **Sitio en Vivo:** [https://gows-web-oficial.vercel.app/](https://gows-web-oficial.vercel.app/)
 
@@ -16,21 +16,23 @@ Este repositorio aloja el sitio web oficial de **GO Web Solutions**. Funciona co
 
 - **Dark Mode Inteligente:** Implementación nativa con variables CSS y persistencia de preferencias del usuario mediante `localStorage`.
 - **Cursor Dinámico Personalizado:** Reemplazo del cursor nativo con un elemento interactivo translúcido que reacciona al hacer hover sobre elementos clickeables, mejorando la inmersión.
-- **Micro-interacciones:** Barra de progreso de lectura vinculada al scroll y animaciones 3D (Tilt) en tarjetas de proyectos.
-- **Lead Generation Automatizado:** Formulario de contacto desacoplado e integrado vía **Webhooks** con ecosistema **n8n Cloud**, permitiendo una gestión de clientes asincrónica, escalable y profesional.
+- **Sistema Custom Toast:** Notificaciones emergentes estilo "Glassmorphism" integradas con Vanilla JS, reemplazando las alertas nativas del navegador.
+- **Carrusel Infinito (Tech Stack):** Cinta de tecnologías en movimiento continuo creada 100% con CSS Animations (`@keyframes`), con pausa al hacer hover.
+- **Micro-interacciones:** Barra de progreso de lectura vinculada al scroll, animaciones 3D (Tilt) en tarjetas de proyectos, y efectos "Neon / Glitch" en botones y logo.
+- **Lead Generation Automatizado:** Formulario de contacto asincrónico (Fetch API) integrado vía **Webhooks** con ecosistema **n8n Cloud**, con manejo de estados visuales ("Enviando...").
 - **Technical SEO & SMO:** Implementación de etiquetas _Open Graph_ y _Twitter Cards_ para previsualizaciones perfectas al compartir enlaces en redes.
 - **Developer Easter Egg:** Mensaje oculto en la consola del navegador para interactuar con reclutadores y colegas técnicos.
 
 ### 🌐 Stack Tecnológico y Habilidades
 
-| Área de Foco          | Implementación Técnica                                                                |
-| :-------------------- | :------------------------------------------------------------------------------------ |
-| **Arquitectura**      | HTML5 Semántico y **CSS3 Modular** (Variables CSS + Flexbox/Grid).                    |
-| **Estilos Avanzados** | Uso de **SASS** para proyectos escalables y mantenibles.                              |
-| **Interactividad**    | JavaScript (ES6+) para manipulación avanzada del DOM, Theme Switching y lógica de UI. |
-| **Experiencia (UX)**  | Animaciones **AOS**, Glassmorphism dinámico y diseño **Fully Responsive**.            |
-| **Automatización**    | Preparado para flujos de trabajo API REST y Webhooks hacia **n8n Cloud** (CRM).       |
-| **Optimización**      | Lazy Loading, SEO técnico y Metadatos Open Graph.                                     |
+| Área de Foco          | Implementación Técnica                                                                                                   |
+| :-------------------- | :----------------------------------------------------------------------------------------------------------------------- |
+| **Arquitectura**      | HTML5 Semántico y **CSS3 Modular** (Variables CSS + Flexbox/Grid).                                                       |
+| **Estilos Avanzados** | Uso de **SASS** (mencionado) y utilidades CSS modernas para animaciones fluidas y Glassmorphism.                         |
+| **Interactividad**    | JavaScript (ES6+) asíncrono para peticiones Fetch, manipulación avanzada del DOM y lógica de UI.                         |
+| **Experiencia (UX)**  | Animaciones **AOS**, notificaciones Toast personalizadas y diseño **100% Responsive** adaptado a todas las resoluciones. |
+| **Automatización**    | Preparado para flujos de trabajo API REST y Webhooks hacia **n8n Cloud** (CRM).                                          |
+| **Optimización**      | Lazy Loading, SEO técnico y Metadatos Open Graph.                                                                        |
 
 ---
 
