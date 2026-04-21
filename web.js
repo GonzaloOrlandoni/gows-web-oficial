@@ -5,17 +5,44 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 1. Inicializar AOS (Animaciones de Scroll) ---
   AOS.init({ duration: 800, once: true });
 
-  // --- 2. Navbar Inteligente (Glassmorphism al bajar) ---
+  // --- 2. Elementos del DOM ---
   const navbar = document.getElementById("navbar");
+  const scrollBtn = document.querySelector("#scrollToTopBtn");
+  const progressBar = document.getElementById("progress-bar");
+
+  // --- 3. Scroll Unificado con requestAnimationFrame (Optimización) ---
+  let isScrolling = false;
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+
+        // Navbar
+        if (navbar) {
+          if (scrollY > 50) navbar.classList.add("scrolled");
+          else navbar.classList.remove("scrolled");
+        }
+
+        // Scroll To Top
+        if (scrollBtn) {
+          if (scrollY > 400) scrollBtn.classList.add("show");
+          else scrollBtn.classList.remove("show");
+        }
+
+        // Progress Bar
+        if (progressBar) {
+          let docHeight = document.body.scrollHeight - window.innerHeight;
+          let scrollPercent = (scrollY / docHeight) * 100;
+          progressBar.style.width = scrollPercent + "%";
+        }
+
+        isScrolling = false;
+      });
+      isScrolling = true;
     }
   });
 
-  // --- 2.1 Menú Hamburguesa (Móvil) ---
+  // --- 4. Menú Hamburguesa (Móvil) ---
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector("#nav-links");
   const navItems = document.querySelectorAll("#nav-links li a");
@@ -24,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navLinks.classList.toggle("show");
+      const isExpanded = hamburger.classList.contains("active");
+      hamburger.setAttribute("aria-expanded", isExpanded);
     });
 
     // Cerrar menú al hacer click en una opción
@@ -31,18 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
       item.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navLinks.classList.remove("show");
+        hamburger.setAttribute("aria-expanded", "false");
       });
     });
   }
 
-  // --- 3. Scroll to Top Botón ---
-  const scrollBtn = document.querySelector("#scrollToTopBtn");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) scrollBtn.classList.add("show");
-    else scrollBtn.classList.remove("show");
-  });
-
-  // --- 4. Skeleton Screen (Portfolio) ---
+  // --- 5. Skeleton Screen (Portfolio) ---
   const portfolioCards = document.querySelectorAll(".proyecto-card");
   portfolioCards.forEach((card) => {
     const img = card.querySelector("img");
@@ -57,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- 5. Efecto 3D en Tarjetas (VanillaTilt) ---
+  // --- 6. Efecto 3D en Tarjetas (VanillaTilt) ---
   if (typeof VanillaTilt !== "undefined") {
     VanillaTilt.init(document.querySelectorAll(".proyecto-card"), {
       max: 8,
@@ -67,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- 6. Formulario Asíncrono (Preparado para n8n) ---
+  // --- 7. Formulario Asíncrono ---
   const form = document.querySelector(".contacto-form");
   const status = document.querySelector("#form-status");
   const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
@@ -76,12 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Estado de carga (Loading)
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       }
-      status.innerHTML = "";
+      if (status) status.innerHTML = "";
 
       const data = new FormData(form);
       try {
@@ -100,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         showToast("Error de conexión. Verifica tu internet.", "error");
       } finally {
-        // Restaurar estado del botón
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = "Enviar Mensaje";
@@ -109,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- 7. Efecto Máquina de Escribir (Hero) ---
+  // --- 8. Efecto Máquina de Escribir (Hero) ---
   const sloganElement = document.querySelector(".hero-content .slogan");
   if (sloganElement) {
     const words = [
@@ -149,7 +170,49 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 1000);
   }
 
-  // --- 8. Easter Egg para Consola (Reclutadores) ---
+  // --- 9. Cursor personalizado dinámico ---
+  const cursor = document.querySelector(".custom-cursor");
+  // Verificar si es un dispositivo touch para desactivarlo por completo
+  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+  if (cursor && !isTouchDevice) {
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+    const clickables = document.querySelectorAll("a, button, .proyecto-card, input, textarea");
+    clickables.forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+    });
+  }
+
+  // --- 10. Modo Oscuro (Dark Mode) ---
+  const themeBtn = document.getElementById("theme-toggle");
+  const body = document.body;
+  const themeIcon = themeBtn ? themeBtn.querySelector("i") : null;
+
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
+    if (themeBtn) themeBtn.setAttribute("aria-label", "Cambiar a modo claro");
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+        themeBtn.setAttribute("aria-label", "Cambiar a modo claro");
+      } else {
+        localStorage.setItem("theme", "light");
+        themeIcon.classList.replace("fa-sun", "fa-moon");
+        themeBtn.setAttribute("aria-label", "Cambiar a modo oscuro");
+      }
+    });
+  }
+
+  // --- 11. Easter Egg para Consola (Reclutadores) ---
   const easterEggStyle1 = "color: #5e3b7d; font-size: 24px; font-weight: bold; font-family: 'Montserrat', sans-serif;";
   const easterEggStyle2 = "color: #a0a0a0; font-size: 14px; font-family: monospace; line-height: 1.5;";
   const easterEggStyle3 =
@@ -183,9 +246,12 @@ function showToast(message, type = "info") {
 
   toast.innerHTML = `
     <div class="toast-icon">${icon}</div>
-    <div class="toast-message">${message}</div>
+    <div class="toast-message"></div>
     <button class="toast-close"><i class="fas fa-times"></i></button>
   `;
+
+  // Evitar XSS inyectando el texto como textContent
+  toast.querySelector(".toast-message").textContent = message;
 
   container.appendChild(toast);
 
@@ -201,6 +267,8 @@ function showToast(message, type = "info") {
     closeToast(toast);
   });
 }
+// Exponer globalmente para que sea accesible desde onclick en HTML
+window.showToast = showToast;
 
 function closeToast(toast) {
   toast.classList.remove("show");
@@ -215,51 +283,4 @@ function mostrarProximamente(e) {
   e.preventDefault();
   showToast("¡GOWS Perfumerie está actualmente en desarrollo! Estará disponible pronto.", "tech");
 }
-
-// Barra de progreso de lectura
-const progressBar = document.getElementById("progress-bar");
-window.addEventListener("scroll", () => {
-  if (progressBar) {
-    let scrollTop = window.scrollY;
-    let docHeight = document.body.scrollHeight - window.innerHeight;
-    let scrollPercent = (scrollTop / docHeight) * 100;
-    progressBar.style.width = scrollPercent + "%";
-  }
-});
-
-// Cursor personalizado dinámico
-const cursor = document.querySelector(".custom-cursor");
-if (cursor) {
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
-  const clickables = document.querySelectorAll("a, button, .proyecto-card, input, textarea");
-  clickables.forEach((el) => {
-    el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
-    el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
-  });
-}
-
-// Modo Oscuro (Dark Mode)
-const themeBtn = document.getElementById("theme-toggle");
-const body = document.body;
-const themeIcon = themeBtn ? themeBtn.querySelector("i") : null;
-
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark-mode");
-  if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
-}
-
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-    if (body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      themeIcon.classList.replace("fa-moon", "fa-sun");
-    } else {
-      localStorage.setItem("theme", "light");
-      themeIcon.classList.replace("fa-sun", "fa-moon");
-    }
-  });
-}
+window.mostrarProximamente = mostrarProximamente;
