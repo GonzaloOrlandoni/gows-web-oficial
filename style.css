@@ -954,7 +954,6 @@ body.dark-mode .toast-close:hover {
 }
 
 @keyframes blink {
-
   0%,
   100% {
     opacity: 1;
@@ -1180,7 +1179,7 @@ body.dark-mode .tech-marquee-container {
   color: var(--primary-text);
 }
 
-.tech-marquee-content>* {
+.tech-marquee-content > * {
   display: flex;
   align-items: center;
 }
@@ -1295,7 +1294,6 @@ body.dark-mode .btn-icon:hover {
 
 /* Adapta elementos a pantallas móviles pequeñas */
 @media (max-width: 600px) {
-
   .portfolio-grid,
   .servicios-grid,
   .proceso-grid,
