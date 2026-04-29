@@ -1,17 +1,13 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBM1LE0Q10"></script>
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-XXXXXX");
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DBM1LE0Q10');
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,6 +50,7 @@
     <script src="web.js" defer></script>
 
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#5e3b7d" />
     <meta
       name="keywords"
       content="Desarrollador Web, Gonzalo Orlandoni, GO Web Solutions, Frontend, React, UX/UI, Web Design, Argentina"
@@ -85,14 +82,7 @@
     <div id="progress-bar"></div>
     <div class="custom-cursor"></div>
 
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+
 
     <header id="navbar" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
       <a href="#" class="logo">GO</a>
@@ -211,11 +201,11 @@
               <div class="sobre-mi-botones">
                 <a href="#contacto" class="btn btn--secondary">Hablemos</a>
                 <a
-                  href="#"
+                  href="cv-gonzalo-orlandoni.pdf"
                   class="btn btn--primary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onclick="showToast('El CV se descargará en breve.', 'info')"
+                  download="CV-Gonzalo-Orlandoni.pdf"
                   ><i class="fas fa-download"></i> Descargar CV</a
                 >
               </div>
@@ -226,8 +216,17 @@
 
       <section id="portfolio">
         <h2 data-aos="fade-up">Mi Portfolio</h2>
+
+        <!-- FILTROS DE PORTFOLIO -->
+        <div class="portfolio-filters" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="html">HTML/CSS/JS</button>
+          <button class="filter-btn" data-filter="nextjs">Next.js</button>
+          <button class="filter-btn" data-filter="sass">SASS</button>
+        </div>
+
         <div class="portfolio-grid">
-          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="100" data-tech="html">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
               <img src="img/proyecto-fitlab.webp" alt="Vista previa de FitLab Landing Page" loading="lazy" />
@@ -260,7 +259,7 @@
             </div>
           </div>
 
-          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200" data-tech="sass">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
               <img src="img/proyecto-constructora.webp" alt="Web Corporativa GO Construcciones" loading="lazy" />
@@ -296,7 +295,7 @@
             </div>
           </div>
 
-          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="300" data-tech="nextjs">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
               <img src="img/ecommercegows.webp" alt="Vista previa GOWS Hardware" loading="lazy" />
@@ -329,7 +328,7 @@
             </div>
           </div>
 
-          <div class="proyecto-card proyecto-proximamente" data-aos="fade-up" data-aos-delay="400">
+          <div class="proyecto-card proyecto-proximamente" data-aos="fade-up" data-aos-delay="400" data-tech="nextjs">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
               <img src="img/gowsperfumerie.webp" alt="GOWS Perfumerie Próximamente" loading="lazy" />
@@ -375,59 +374,47 @@
         </div>
       </section>
 
-      <section id="testimonios">
-        <h2 data-aos="fade-up">Lo que dicen de mi trabajo</h2>
-        <div class="testimonios-grid">
-          <div class="testimonio-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonio-estrellas">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonio-texto">
-              "Gonzalo transformó mi idea en un sitio web funcional y rápido. Su atención al detalle y su código limpio
-              son impresionantes. 100% recomendado."
+      <section id="por-que-yo">
+        <h2 data-aos="fade-up">¿Por qué elegirme?</h2>
+        <p class="seccion-subtitulo" data-aos="fade-up">
+          No solo entrego código. Entrego resultados, claridad y una experiencia de trabajo sin fricciones.
+        </p>
+        <div class="porquemi-grid">
+          <div class="porquemi-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="porquemi-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Código Limpio y Escalable</h3>
+            <p>
+              Escribo código documentado, modular y mantenible. Tu proyecto no va a ser una caja negra:
+              cualquier dev puede retomarlo sin problemas.
             </p>
-            <h4 class="testimonio-autor">Nombre Apellido</h4>
-            <span class="testimonio-rol">CEO, Empresa Ficticia</span>
           </div>
-          <div class="testimonio-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="testimonio-estrellas">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonio-texto">
-              "El proceso fue increíblemente claro. Gonzalo entendió la visión de inmediato y entregó un producto final
-              que superó mis expectativas. Un verdadero profesional."
+          <div class="porquemi-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="porquemi-icon"><i class="fas fa-comments"></i></div>
+            <h3>Comunicación Transparente</h3>
+            <p>
+              Actualizaciones constantes, tiempos de respuesta rápidos y cero sorpresas.
+              Sabés exactamente en qué etapa está tu proyecto en todo momento.
             </p>
-            <h4 class="testimonio-autor">Nombre Apellido</h4>
-            <span class="testimonio-rol">Colega, Coderhouse</span>
           </div>
-          <div class="testimonio-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="testimonio-estrellas">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonio-texto">
-              "Excelente comunicación y habilidades técnicas. Resolvió problemas complejos de JavaScript que otros
-              desarrolladores no pudieron. Volvería a contratarlo."
+          <div class="porquemi-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="porquemi-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Enfoque en Resultados</h3>
+            <p>
+              No me obsesiono con el "lindo". Me obsesiono con el "funciona y convierte".
+              Cada decisión de diseño tiene un propósito estratégico detrás.
             </p>
-            <h4 class="testimonio-autor">Nombre Apellido</h4>
-            <span class="testimonio-rol">Project Manager</span>
           </div>
-          <div class="testimonio-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="testimonio-estrellas">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonio-texto">
-              "El diseño UX/UI que propuso fue moderno, limpio y exactamente lo que buscábamos. El sitio no solo es
-              lindo, sino que también es increíblemente fácil de usar."
+          <div class="porquemi-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="porquemi-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Entrega Rápida y Real</h3>
+            <p>
+              Trabajo con plazos concretos y los cumplo. Sin excusas ni demoras injustificadas.
+              Tu negocio no puede esperar, y yo lo sé.
             </p>
-            <h4 class="testimonio-autor">Nombre Apellido</h4>
-            <span class="testimonio-rol">Cliente, Startup</span>
           </div>
         </div>
       </section>
+
 
       <section id="contacto">
         <div class="contacto-wrapper" data-aos="fade-up" data-aos-duration="800">
@@ -444,6 +431,11 @@
           </div>
 
           <form class="contacto-form" action="https://gonzalo4.app.n8n.cloud/webhook/contacto-gows" method="POST">
+            <!-- Honeypot anti-spam: campo oculto que los bots rellenan -->
+            <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+              <label for="website">No rellenar este campo</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" required placeholder="Ej: Go Web Solutions" />
 
@@ -469,6 +461,18 @@
 
     <a href="#" id="scrollToTopBtn" aria-label="Volver al inicio">
       <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/5491128831895?text=Hola%20Gonzalo%2C%20vi%20tu%20portfolio%20y%20me%20interesa%20hablar%20sobre%20un%20proyecto."
+      id="whatsapp-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+      <span class="whatsapp-tooltip">¡Hablemos!</span>
     </a>
 
     <footer>

@@ -284,3 +284,106 @@ function mostrarProximamente(e) {
   showToast("¡GOWS Perfumerie está actualmente en desarrollo! Estará disponible pronto.", "tech");
 }
 window.mostrarProximamente = mostrarProximamente;
+
+// =========================================
+//  AUTOMATIZACIONES
+// =========================================
+
+// --- A1. Active Nav Link (Intersection Observer) ---
+(function initActiveNavLink() {
+  const sections = document.querySelectorAll("main section[id]");
+  const navLinks = document.querySelectorAll("#nav-links a[href^='#']");
+
+  if (!sections.length || !navLinks.length) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-40% 0px -55% 0px",
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.remove("nav-active");
+          if (link.getAttribute("href") === "#" + entry.target.id) {
+            link.classList.add("nav-active");
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+})();
+
+// --- A2. Portfolio Filter ---
+(function initPortfolioFilter() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".proyecto-card");
+
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Actualizar estado activo de botones
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      cards.forEach((card) => {
+        const tech = card.dataset.tech || "";
+        if (filter === "all" || tech === filter) {
+          card.classList.remove("hidden-card");
+        } else {
+          card.classList.add("hidden-card");
+        }
+      });
+    });
+  });
+})();
+
+// --- A3. Contador de Visitas + Toast de Bienvenida personalizado ---
+(function initVisitCounter() {
+  const VISIT_KEY = "gows_visit_count";
+  const visits = parseInt(localStorage.getItem(VISIT_KEY) || "0", 10) + 1;
+  localStorage.setItem(VISIT_KEY, visits);
+
+  // Delay para no solaparse con la animación de entrada
+  setTimeout(() => {
+    if (visits === 1) {
+      showToast("¡Bienvenido a GO Web Solutions! 👋", "info");
+    } else if (visits % 5 === 0) {
+      showToast(`¡Qué bueno verte de vuelta! Ya son ${visits} visitas. 🚀`, "tech");
+    }
+  }, 2000);
+})();
+
+// --- A4. Honeypot Anti-Spam (Formulario) ---
+(function initHoneypot() {
+  const form = document.querySelector(".contacto-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    const honeypot = form.querySelector('input[name="website"]');
+    if (honeypot && honeypot.value.trim() !== "") {
+      // Es un bot: cancelar y simular éxito silenciosamente
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        setTimeout(() => {
+          showToast("¡Mensaje enviado con éxito! Te responderé a la brevedad.", "success");
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "Enviar Mensaje";
+        }, 1500);
+      }
+    }
+  }, true); // Captura: se ejecuta ANTES del handler del formulario
+})();
+
