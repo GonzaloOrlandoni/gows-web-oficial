@@ -1524,3 +1524,64 @@ body.dark-mode .filter-btn.active {
 #navbar nav a.btn.nav-active {
   color: white;
 }
+
+/* ============================================
+   BADGE "EN DESARROLLO" — GOWS Perfumerie
+   ============================================ */
+
+.proyecto-card {
+  position: relative; /* necesario para posicionar el badge */
+}
+
+/* Badge flotante "95% Desarrollado" */
+.badge-desarrollo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.92);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+}
+
+/* Punto pulsante verde */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pulse-badge 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* Borde sutil en la card para diferenciarla */
+.proyecto-card.proyecto-en-desarrollo {
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);
+}
+
+/* Dark mode */
+body.dark-mode .badge-desarrollo {
+  background: rgba(5, 150, 105, 0.95);
+  box-shadow: 0 2px 10px rgba(5, 150, 105, 0.5);
+}
+
+body.dark-mode .proyecto-card.proyecto-en-desarrollo {
+  border-color: rgba(16, 185, 129, 0.35);
+}
