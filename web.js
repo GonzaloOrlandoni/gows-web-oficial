@@ -278,12 +278,7 @@ function closeToast(toast) {
   });
 }
 
-// Proyectos próximamente
-function mostrarProximamente(e) {
-  e.preventDefault();
-  showToast("¡GOWS Perfumerie está actualmente en desarrollo! Estará disponible pronto.", "tech");
-}
-window.mostrarProximamente = mostrarProximamente;
+
 
 // =========================================
 //  AUTOMATIZACIONES

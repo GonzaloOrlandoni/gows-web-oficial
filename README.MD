@@ -61,6 +61,16 @@ El sitio exhibe una selección estratégica de proyectos que cubren diferentes n
   - **Estado Global:** Persistencia de carrito con Zustand.
   - **Funcionalidad Real:** Generación de PDF de presupuestos y checkout a WhatsApp.
 
+### 4. GOWS Perfumerie (E-commerce React)
+
+- **Enfoque:** Single Page Application (SPA) Moderna.
+- **Descripción:** Tienda online interactiva enfocada en la venta de fragancias premium.
+- **Tecnología:** Desarrollado con **React**, **Vite**, **TailwindCSS**, **React Router** y **Context API**.
+- **Key Features:** 
+  - Filtros dinámicos de productos y búsqueda en tiempo real.
+  - Carrito de compras persistente.
+  - Diseño responsive y optimizado con TailwindCSS.
+
 ---
 
 ## 🛠️ Instalación y Uso Local

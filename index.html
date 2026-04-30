@@ -37,7 +37,7 @@
     />
     <meta name="twitter:image" content="https://gows-web-oficial.vercel.app/img/preview-image.webp" />
 
-    <link rel="icon" type="image/png" href="img/favicon.webp" />
+    <link rel="icon" type="image/webp" href="img/favicon.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -113,6 +113,19 @@
         <div class="hero-content" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
           <h1>GO Web Solutions</h1>
           <p class="slogan">Soluciones web que convierten.</p>
+          <p
+            class="hero-sub"
+            style="
+              color: var(--secondary-text);
+              font-size: 1.1rem;
+              max-width: 600px;
+              margin: 0 auto 2.5rem;
+              line-height: 1.6;
+            "
+          >
+            Transformo tu visión en plataformas digitales de alto rendimiento. Diseño premium y desarrollo a medida para
+            negocios que buscan escalar.
+          </p>
           <a href="#portfolio" class="btn btn--primary">VER PROYECTOS</a>
         </div>
       </section>
@@ -155,17 +168,17 @@
         <h2 data-aos="fade-up">Mis Servicios</h2>
         <div class="servicios-grid">
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="100">
-            <h3><i class="fas fa-desktop"></i> Diseño y Desarrollo Web</h3>
+            <h3><i class="fas fa-desktop"></i> Diseño & Landing Pages</h3>
             <p>
-              Sitios web modernos y responsivos, centrados en la experiencia de usuario (UX/UI) y una performance de
-              carga superior.
+              Sitios web modernos y responsivos, centrados en la experiencia de usuario (UX/UI) para captar clientes
+              desde el primer segundo.
             </p>
           </div>
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="200">
-            <h3><i class="fas fa-code"></i> Desarrollo Frontend</h3>
+            <h3><i class="fas fa-shopping-cart"></i> E-commerce & Web Apps</h3>
             <p>
-              Implementación de lógica de negocio y soluciones interactivas con JavaScript, React y las tecnologías más
-              demandadas.
+              Creación de tiendas online de alta conversión y aplicaciones web a medida. Escalables, rápidas y listas
+              para vender.
             </p>
           </div>
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="300">
@@ -263,7 +276,7 @@
           <div class="proyecto-card" data-aos="fade-up" data-aos-delay="200" data-tech="sass">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
-              <img src="img/proyecto-constructora.webp" alt="Web Corporativa GO Construcciones" loading="lazy" />
+              <img src="img/preview.webp" alt="Web Corporativa GO Construcciones" loading="lazy" />
             </div>
             <div class="proyecto-info">
               <h3>Web Corporativa</h3>
@@ -329,12 +342,7 @@
             </div>
           </div>
 
-          <div class="proyecto-card proyecto-en-desarrollo" data-aos="fade-up" data-aos-delay="400" data-tech="react">
-            <!-- Badge 95% -->
-            <div class="badge-desarrollo">
-              <span class="pulse-dot"></span>
-              95% Desarrollado
-            </div>
+          <div class="proyecto-card" data-aos="fade-up" data-aos-delay="400" data-tech="react">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
               <img src="img/gowsperfumerie.webp" alt="GOWS Perfumerie E-commerce de Fragancias" loading="lazy" />
@@ -349,10 +357,17 @@
                 <span class="badge">React</span>
                 <span class="badge">Vite</span>
                 <span class="badge">TailwindCSS</span>
-                <span class="badge">Firebase</span>
+                <span class="badge">React Router</span>
+                <span class="badge">Context API</span>
               </div>
               <div class="proyecto-botones">
-                <a href="#" class="btn btn--secondary" onclick="mostrarProximamente(event)">Ver Demo</a>
+                <a
+                  href="https://gonzaloorlandoni.github.io/gows-perfumerie-ecommerce/"
+                  class="btn btn--secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver Demo</a
+                >
                 <a
                   href="https://github.com/GonzaloOrlandoni"
                   class="btn-icon"
@@ -364,6 +379,15 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="portfolio-cta" data-aos="fade-up" style="text-align: center; margin-top: 4rem">
+          <a
+            href="#contacto"
+            class="btn btn--primary"
+            style="padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 50px"
+            >Quiero una web de este nivel</a
+          >
         </div>
       </section>
 
@@ -500,17 +524,55 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Perfil de GitHub"
+          class="social-icon"
         >
-          <img src="img/logogithub.webp" alt="Logo GitHub" loading="lazy" />
+          <i class="fab fa-github"></i>
         </a>
         <a
           href="https://www.linkedin.com/in/gonzalo-orlandoni/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Perfil de LinkedIn"
+          class="social-icon"
         >
-          <img src="img/logolinkedin.webp" alt="Logo LinkedIn" loading="lazy" />
+          <i class="fab fa-linkedin-in"></i>
         </a>
+        <a
+          href="https://www.instagram.com/go_web_solutions/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de GO Web Solutions"
+          class="social-icon"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://www.tiktok.com/@gowebsolutions"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok de GO Web Solutions"
+          class="social-icon"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+      <div
+        class="footer-vercel"
+        style="
+          margin-bottom: 1.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.85rem;
+          color: #a0a0a0;
+        "
+      >
+        Powered by
+        <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px">
+          <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="currentColor" />
+        </svg>
+        Vercel
       </div>
       <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
     </footer>
