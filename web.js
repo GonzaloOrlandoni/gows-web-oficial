@@ -101,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       }
       if (status) status.innerHTML = "";
 
@@ -114,7 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (response.ok) {
-          showToast("¡Mensaje enviado con éxito! Te responderé a la brevedad.", "success");
+          showToast(
+            "¡Mensaje enviado con éxito! Te responderé a la brevedad.",
+            "success",
+          );
           form.reset();
         } else {
           showToast("Hubo un error al enviar. Intentá nuevamente.", "error");
@@ -142,7 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let charIndex = 0;
     let isDeleting = false;
 
-    sloganElement.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor"></span>';
+    sloganElement.innerHTML =
+      '<span class="typewriter-text"></span><span class="typewriter-cursor"></span>';
     const textSpan = sloganElement.querySelector(".typewriter-text");
 
     function typeWriter() {
@@ -179,7 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cursor.style.left = e.clientX + "px";
       cursor.style.top = e.clientY + "px";
     });
-    const clickables = document.querySelectorAll("a, button, .proyecto-card, input, textarea");
+    const clickables = document.querySelectorAll(
+      "a, button, .proyecto-card, input, textarea",
+    );
     clickables.forEach((el) => {
       el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
       el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
@@ -213,8 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 11. Easter Egg para Consola (Reclutadores) ---
-  const easterEggStyle1 = "color: #5e3b7d; font-size: 24px; font-weight: bold; font-family: 'Montserrat', sans-serif;";
-  const easterEggStyle2 = "color: #a0a0a0; font-size: 14px; font-family: monospace; line-height: 1.5;";
+  const easterEggStyle1 =
+    "color: #5e3b7d; font-size: 24px; font-weight: bold; font-family: 'Montserrat', sans-serif;";
+  const easterEggStyle2 =
+    "color: #a0a0a0; font-size: 14px; font-family: monospace; line-height: 1.5;";
   const easterEggStyle3 =
     "color: #ffffff; background-color: #5e3b7d; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: bold;";
 
@@ -223,7 +232,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "%cVeo que te gusta inspeccionar el código (a mí también 👀). \nSi estás buscando un desarrollador frontend que cuide la performance, la estética y los detalles de UI/UX, estás en el lugar correcto.",
     easterEggStyle2,
   );
-  console.log("%cEscribime a gowebsolutions4@gmail.com y hablemos de negocios. ☕", easterEggStyle3);
+  console.log(
+    "%cEscribime a gowebsolutions4@gmail.com y hablemos de negocios. ☕",
+    easterEggStyle3,
+  );
 });
 
 // =========================================
@@ -277,8 +289,6 @@ function closeToast(toast) {
     toast.remove();
   });
 }
-
-
 
 // =========================================
 //  AUTOMATIZACIONES
@@ -351,7 +361,10 @@ function closeToast(toast) {
     if (visits === 1) {
       showToast("¡Bienvenido a GO Web Solutions! 👋", "info");
     } else if (visits % 5 === 0) {
-      showToast(`¡Qué bueno verte de vuelta! Ya son ${visits} visitas. 🚀`, "tech");
+      showToast(
+        `¡Qué bueno verte de vuelta! Ya son ${visits} visitas. 🚀`,
+        "tech",
+      );
     }
   }, 2000);
 })();
@@ -361,24 +374,31 @@ function closeToast(toast) {
   const form = document.querySelector(".contacto-form");
   if (!form) return;
 
-  form.addEventListener("submit", (e) => {
-    const honeypot = form.querySelector('input[name="website"]');
-    if (honeypot && honeypot.value.trim() !== "") {
-      // Es un bot: cancelar y simular éxito silenciosamente
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-        setTimeout(() => {
-          showToast("¡Mensaje enviado con éxito! Te responderé a la brevedad.", "success");
-          form.reset();
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = "Enviar Mensaje";
-        }, 1500);
+  form.addEventListener(
+    "submit",
+    (e) => {
+      const honeypot = form.querySelector('input[name="website"]');
+      if (honeypot && honeypot.value.trim() !== "") {
+        // Es un bot: cancelar y simular éxito silenciosamente
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+          setTimeout(() => {
+            showToast(
+              "¡Mensaje enviado con éxito! Te responderé a la brevedad.",
+              "success",
+            );
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Enviar Mensaje";
+          }, 1500);
+        }
       }
-    }
-  }, true); // Captura: se ejecuta ANTES del handler del formulario
+    },
+    true,
+  ); // Captura: se ejecuta ANTES del handler del formulario
 })();
-

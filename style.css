@@ -49,7 +49,11 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, var(--background-gradient-start), var(--background-gradient-end));
+  background: linear-gradient(
+    to bottom,
+    var(--background-gradient-start),
+    var(--background-gradient-end)
+  );
   background-attachment: fixed;
   color: var(--primary-text);
   font-family: var(--font-stack);
@@ -315,7 +319,11 @@ body.dark-mode #navbar.scrolled {
   left: 0;
   right: 0;
   height: 60%;
-  background: linear-gradient(to top, var(--background-gradient-start), transparent);
+  background: linear-gradient(
+    to top,
+    var(--background-gradient-start),
+    transparent
+  );
   z-index: -1;
   pointer-events: none;
 }
@@ -327,7 +335,11 @@ body.dark-mode #navbar.scrolled {
 
 .hero-content h1 {
   font-size: var(--fs-h1);
-  background: linear-gradient(135deg, var(--primary-text) 20%, var(--accent-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-text) 20%,
+    var(--accent-color) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -489,12 +501,16 @@ body.dark-mode #navbar.scrolled {
 
 .proyecto-card:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(94, 59, 125, 0.15), 0 0 20px rgba(94, 59, 125, 0.05);
+  box-shadow:
+    0 20px 40px rgba(94, 59, 125, 0.15),
+    0 0 20px rgba(94, 59, 125, 0.05);
   border-color: rgba(94, 59, 125, 0.3);
 }
 
 body.dark-mode .proyecto-card:hover {
-  box-shadow: 0 20px 40px rgba(94, 59, 125, 0.4), 0 0 30px rgba(94, 59, 125, 0.2);
+  box-shadow:
+    0 20px 40px rgba(94, 59, 125, 0.4),
+    0 0 30px rgba(94, 59, 125, 0.2);
 }
 
 .proyecto-card img {
@@ -568,8 +584,6 @@ body.dark-mode .proyecto-card:hover {
   margin-bottom: 2rem;
   flex-grow: 1;
 }
-
-
 
 /* --- CONTACTO SECTION --- */
 .contacto-wrapper {
@@ -735,14 +749,20 @@ body.dark-mode .proyecto-card:hover {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(94, 59, 125, 0.12), rgba(94, 59, 125, 0.06));
+  background: linear-gradient(
+    135deg,
+    rgba(94, 59, 125, 0.12),
+    rgba(94, 59, 125, 0.06)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
   font-size: 1.6rem;
   color: var(--accent-color);
-  transition: background 0.3s, transform 0.3s;
+  transition:
+    background 0.3s,
+    transform 0.3s;
 }
 
 .porquemi-card:hover .porquemi-icon {
@@ -1195,12 +1215,20 @@ body.dark-mode .tech-marquee-container {
 
 .tech-marquee-container::before {
   left: 0;
-  background: linear-gradient(to right, var(--background-card) 0%, transparent 100%);
+  background: linear-gradient(
+    to right,
+    var(--background-card) 0%,
+    transparent 100%
+  );
 }
 
 .tech-marquee-container::after {
   right: 0;
-  background: linear-gradient(to left, var(--background-card) 0%, transparent 100%);
+  background: linear-gradient(
+    to left,
+    var(--background-card) 0%,
+    transparent 100%
+  );
 }
 
 .tech-marquee {
@@ -1405,7 +1433,9 @@ body.dark-mode .btn-icon:hover {
   font-size: 1.6rem;
   text-decoration: none;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 #whatsapp-btn::before {
@@ -1420,8 +1450,14 @@ body.dark-mode .btn-icon:hover {
 }
 
 @keyframes waPulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.8); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 
 #whatsapp-btn:hover {
@@ -1531,5 +1567,3 @@ body.dark-mode .filter-btn.active {
 #navbar nav a.btn.nav-active {
   color: white;
 }
-
-

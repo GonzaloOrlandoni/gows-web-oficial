@@ -66,7 +66,7 @@ El sitio exhibe una selección estratégica de proyectos que cubren diferentes n
 - **Enfoque:** Single Page Application (SPA) Moderna.
 - **Descripción:** Tienda online interactiva enfocada en la venta de fragancias premium.
 - **Tecnología:** Desarrollado con **React**, **Vite**, **TailwindCSS**, **React Router** y **Context API**.
-- **Key Features:** 
+- **Key Features:**
   - Filtros dinámicos de productos y búsqueda en tiempo real.
   - Carrito de compras persistente.
   - Diseño responsive y optimizado con TailwindCSS.
