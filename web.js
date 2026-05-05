@@ -3,7 +3,9 @@
 // =========================================
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. Inicializar AOS (Animaciones de Scroll) ---
-  AOS.init({ duration: 800, once: true });
+  if (typeof AOS !== "undefined") {
+    AOS.init({ duration: 800, once: true });
+  }
 
   // --- 2. Elementos del DOM ---
   const navbar = document.getElementById("navbar");
@@ -69,6 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const portfolioCards = document.querySelectorAll(".proyecto-card");
   portfolioCards.forEach((card) => {
     const img = card.querySelector("img");
+    if (!img) return; // Seguridad: Si no hay imagen, saltar
+
     const markLoaded = () => card.classList.add("loaded");
 
     if (img.complete) {
