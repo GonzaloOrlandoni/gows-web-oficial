@@ -113,9 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(form.action, {
           method: "POST",
           body: JSON.stringify(data),
-          headers: { 
+          headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json" 
+            Accept: "application/json",
           },
         });
 
@@ -241,6 +241,54 @@ document.addEventListener("DOMContentLoaded", () => {
     "%cEscribime a gowebsolutions4@gmail.com y hablemos de negocios. ☕",
     easterEggStyle3,
   );
+
+  // --- 12. Lógica del Carrusel de Portfolio ---
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-control.prev");
+  const nextBtn = document.querySelector(".carousel-control.next");
+
+  if (track && prevBtn && nextBtn) {
+    let currentIndex = 0;
+
+    const updateCarousel = () => {
+      const items = track.querySelectorAll(".carousel-item");
+      if (items.length === 0) return;
+
+      const itemWidth = items[0].offsetWidth + 24;
+      const containerWidth = track.parentElement.offsetWidth;
+      const visibleItems = Math.floor(containerWidth / itemWidth) || 1;
+      const maxIndex = Math.max(0, items.length - visibleItems);
+
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+      track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+      prevBtn.classList.toggle("disabled", currentIndex === 0);
+      nextBtn.classList.toggle("disabled", currentIndex >= maxIndex);
+    };
+
+    nextBtn.addEventListener("click", () => {
+      const items = track.querySelectorAll(".carousel-item");
+      const itemWidth = items[0].offsetWidth + 24;
+      const containerWidth = track.parentElement.offsetWidth;
+      const visibleItems = Math.floor(containerWidth / itemWidth) || 1;
+
+      if (currentIndex < items.length - visibleItems) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener("resize", updateCarousel);
+    setTimeout(updateCarousel, 500);
+  }
 });
 
 // =========================================
@@ -326,33 +374,6 @@ function closeToast(toast) {
   }, observerOptions);
 
   sections.forEach((section) => observer.observe(section));
-})();
-
-// --- A2. Portfolio Filter ---
-(function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".proyecto-card");
-
-  if (!filterBtns.length) return;
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // Actualizar estado activo de botones
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-
-      cards.forEach((card) => {
-        const tech = card.dataset.tech || "";
-        if (filter === "all" || tech === filter) {
-          card.classList.remove("hidden-card");
-        } else {
-          card.classList.add("hidden-card");
-        }
-      });
-    });
-  });
 })();
 
 // --- A3. Contador de Visitas + Toast de Bienvenida personalizado ---
