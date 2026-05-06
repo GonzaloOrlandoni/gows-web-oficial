@@ -1783,33 +1783,4 @@ body.dark-mode .toast-tech {
   background: linear-gradient(to right, #2a2233, #352a41);
 }
 
-.toast-icon {
-  font-size: 1.2rem;
-}
-
-.toast-success .toast-icon { color: #2ecc71; }
-.toast-error .toast-icon { color: #e74c3c; }
-.toast-tech .toast-icon { color: var(--accent-color); }
-
-.toast-message {
-  flex-grow: 1;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.toast-close {
-  background: none;
-  border: none;
-  color: #999;
-  cursor: pointer;
-  padding: 0.2rem;
-  transition: color 0.3s;
-}
-
-.toast-close:hover {
-  color: #333;
-}
-
-body.dark-mode .toast-close:hover {
-  color: white;
 }

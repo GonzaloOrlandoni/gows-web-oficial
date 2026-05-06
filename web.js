@@ -3,9 +3,7 @@
 // =========================================
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. Inicializar AOS (Animaciones de Scroll) ---
-  if (typeof AOS !== "undefined") {
-    AOS.init({ duration: 800, once: true });
-  }
+  AOS.init({ duration: 800, once: true });
 
   // --- 2. Elementos del DOM ---
   const navbar = document.getElementById("navbar");
@@ -71,8 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const portfolioCards = document.querySelectorAll(".proyecto-card");
   portfolioCards.forEach((card) => {
     const img = card.querySelector("img");
-    if (!img) return; // Seguridad: Si no hay imagen, saltar
-
     const markLoaded = () => card.classList.add("loaded");
 
     if (img.complete) {
@@ -296,58 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================
-//  LÓGICA GLOBAL (Fuera del DOMContentLoaded)
-// =========================================
-
-// Sistema de Notificaciones Toast Personalizado
-function showToast(message, type = "info") {
-  const container = document.getElementById("toast-container");
-  if (!container) return;
-
-  const toast = document.createElement("div");
-  toast.className = `toast toast-${type}`;
-
-  // Iconos basados en tipo
-  let icon = '<i class="fas fa-info-circle"></i>';
-  if (type === "success") icon = '<i class="fas fa-check-circle"></i>';
-  if (type === "error") icon = '<i class="fas fa-exclamation-circle"></i>';
-  if (type === "tech") icon = '<i class="fas fa-rocket"></i>';
-
-  toast.innerHTML = `
-    <div class="toast-icon">${icon}</div>
-    <div class="toast-message"></div>
-    <button class="toast-close"><i class="fas fa-times"></i></button>
-  `;
-
-  // Evitar XSS inyectando el texto como textContent
-  toast.querySelector(".toast-message").textContent = message;
-
-  container.appendChild(toast);
-
-  // Animación de entrada
-  setTimeout(() => toast.classList.add("show"), 10);
-
-  // Auto-cerrar después de 4 segundos
-  const timeout = setTimeout(() => closeToast(toast), 4000);
-
-  // Botón cerrar
-  toast.querySelector(".toast-close").addEventListener("click", () => {
-    clearTimeout(timeout);
-    closeToast(toast);
-  });
-}
-// Exponer globalmente para que sea accesible desde onclick en HTML
-window.showToast = showToast;
-
-function closeToast(toast) {
-  toast.classList.remove("show");
-  toast.classList.add("hide");
-  toast.addEventListener("transitionend", () => {
-    toast.remove();
-  });
-}
-
-// =========================================
 //  AUTOMATIZACIONES
 // =========================================
 
@@ -378,25 +322,6 @@ function closeToast(toast) {
   }, observerOptions);
 
   sections.forEach((section) => observer.observe(section));
-})();
-
-// --- A3. Contador de Visitas + Toast de Bienvenida personalizado ---
-(function initVisitCounter() {
-  const VISIT_KEY = "gows_visit_count";
-  const visits = parseInt(localStorage.getItem(VISIT_KEY) || "0", 10) + 1;
-  localStorage.setItem(VISIT_KEY, visits);
-
-  // Delay para no solaparse con la animación de entrada
-  setTimeout(() => {
-    if (visits === 1) {
-      showToast("¡Bienvenido a GO Web Solutions! 👋", "info");
-    } else if (visits % 5 === 0) {
-      showToast(
-        `¡Qué bueno verte de vuelta! Ya son ${visits} visitas. 🚀`,
-        "tech",
-      );
-    }
-  }, 2000);
 })();
 
 // --- A4. Honeypot Anti-Spam (Formulario) ---
