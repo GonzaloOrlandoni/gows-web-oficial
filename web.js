@@ -243,12 +243,14 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // --- 12. Lógica del Carrusel de Portfolio ---
+  const carouselContainer = document.querySelector(".carousel-container");
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-control.prev");
   const nextBtn = document.querySelector(".carousel-control.next");
 
-  if (track && prevBtn && nextBtn) {
+  if (track && prevBtn && nextBtn && carouselContainer) {
     let currentIndex = 0;
+    let autoPlayInterval;
 
     const updateCarousel = () => {
       const items = track.querySelectorAll(".carousel-item");
@@ -260,6 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const maxIndex = Math.max(0, items.length - visibleItems);
 
       if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
 
       track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
 
@@ -267,16 +270,26 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.classList.toggle("disabled", currentIndex >= maxIndex);
     };
 
-    nextBtn.addEventListener("click", () => {
+    const goNext = () => {
       const items = track.querySelectorAll(".carousel-item");
       const itemWidth = items[0].offsetWidth + 24;
       const containerWidth = track.parentElement.offsetWidth;
       const visibleItems = Math.floor(containerWidth / itemWidth) || 1;
+      const maxIndex = Math.max(0, items.length - visibleItems);
 
-      if (currentIndex < items.length - visibleItems) {
+      if (currentIndex < maxIndex) {
         currentIndex++;
-        updateCarousel();
+      } else {
+        currentIndex = 0; // Loop al inicio para que el autoplay sea continuo
       }
+      updateCarousel();
+    };
+
+    nextBtn.addEventListener("click", () => {
+      goNext();
+      // Resetea el temporizador si el usuario interactúa manualmente
+      stopAutoPlay();
+      startAutoPlay();
     });
 
     prevBtn.addEventListener("click", () => {
@@ -284,10 +297,29 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex--;
         updateCarousel();
       }
+      stopAutoPlay();
+      startAutoPlay();
     });
 
     window.addEventListener("resize", updateCarousel);
     setTimeout(updateCarousel, 500);
+
+    // Auto-Play Híbrido: Gira solo pero se pausa al pasar el mouse
+    const startAutoPlay = () => {
+      stopAutoPlay(); // Evita múltiples intervalos
+      autoPlayInterval = setInterval(goNext, 4000);
+    };
+
+    const stopAutoPlay = () => {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+    };
+
+    carouselContainer.addEventListener("mouseenter", stopAutoPlay);
+    carouselContainer.addEventListener("mouseleave", startAutoPlay);
+    carouselContainer.addEventListener("touchstart", stopAutoPlay, { passive: true });
+    carouselContainer.addEventListener("touchend", startAutoPlay, { passive: true });
+
+    startAutoPlay();
   }
 });
 
