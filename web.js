@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 // --- SISTEMA DE NOTIFICACIONES PREMIUM (TOAST) ---
-window.showToast = function(message, type = "success") {
+window.showToast = function (message, type = "success") {
   const toast = document.createElement("div");
   toast.textContent = message;
 
