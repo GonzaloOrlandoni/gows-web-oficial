@@ -373,3 +373,48 @@ document.addEventListener("DOMContentLoaded", () => {
     true,
   ); // Captura: se ejecuta ANTES del handler del formulario
 })();
+
+// --- SISTEMA DE NOTIFICACIONES PREMIUM (TOAST) ---
+window.showToast = function(message, type = "success") {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+
+  // Estilos premium
+  toast.style.position = "fixed";
+  toast.style.bottom = "30px";
+  toast.style.right = "30px";
+  toast.style.padding = "16px 28px";
+  toast.style.borderRadius = "12px";
+  toast.style.color = "white";
+  toast.style.fontFamily = "Outfit, sans-serif";
+  toast.style.fontWeight = "500";
+  toast.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
+  toast.style.zIndex = "99999";
+  toast.style.transition = "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+  toast.style.transform = "translateY(100px)";
+  toast.style.opacity = "0";
+
+  // Colores según el tipo
+  if (type === "success") {
+    toast.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+    toast.innerHTML = `<i class="fas fa-check-circle" style="margin-right: 8px;"></i> ${message}`;
+  } else {
+    toast.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
+    toast.innerHTML = `<i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> ${message}`;
+  }
+
+  document.body.appendChild(toast);
+
+  // Animación de entrada
+  setTimeout(() => {
+    toast.style.transform = "translateY(0)";
+    toast.style.opacity = "1";
+  }, 100);
+
+  // Animación de salida y destrucción
+  setTimeout(() => {
+    toast.style.transform = "translateY(100px)";
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
+};
