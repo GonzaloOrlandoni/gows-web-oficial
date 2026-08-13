@@ -13,7 +13,7 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/webp" href="img/favicon.webp" />
     <title>GO Web Solutions | Soluciones Web que Convierten</title>
 
     <meta
@@ -82,8 +82,9 @@
   </head>
 
   <body>
+    <canvas id="particles"></canvas>
+    <div class="gows-watermark">GOWS</div>
     <div id="progress-bar"></div>
-    <div class="custom-cursor"></div>
 
     <header id="navbar" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
       <a href="#" class="logo">GO</a>
@@ -95,11 +96,6 @@
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#contacto" class="btn btn--primary">CONTACTAR</a></li>
-          <li>
-            <button id="theme-toggle" aria-label="Cambiar modo oscuro">
-              <i class="fas fa-moon"></i>
-            </button>
-          </li>
         </ul>
       </nav>
       <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
@@ -112,20 +108,23 @@
     <main>
       <section id="hero">
         <div class="hero-content" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
-          <h1>GO Web Solutions</h1>
-          <p class="slogan">No hacemos diseño web.</p>
+          <div class="eyebrow">Estudio de diseño web estratégico · Desarrollo frontend</div>
+          <h1>
+            <span>transformamos</span>
+            <span>ideas en</span>
+            <span>negocios reales</span>
+          </h1>
           <p
             class="hero-sub"
             style="
               color: var(--secondary-text);
-              font-size: 1.1rem;
-              max-width: 600px;
+              font-size: clamp(1rem, 1.6vw, 1.25rem);
+              max-width: 520px;
               margin: 0 auto 2.5rem;
-              line-height: 1.6;
+              line-height: 1.5;
             "
           >
-            Somos un estudio de Diseño Web Estratégico. Creamos ecosistemas premium orientados a la conversión para
-            negocios que buscan proyectar autoridad.
+            Si tu web no te genera clientes, no es un problema de suerte. Es un problema de sistema — y lo resolvemos.
           </p>
           <a href="#portfolio" class="btn btn--primary">VER PROYECTOS</a>
         </div>
@@ -202,9 +201,8 @@
               <h2>El Estudio</h2>
               <h3>Detrás de GO Web Solutions</h3>
               <p>
-                Hola, soy Gonzalo Orlandoni, CEO & FOUNDER de GO Web Solutions. Fundé este estudio con una sola
-                misión: dejar de hacer páginas web genéricas y empezar a construir herramientas de venta reales para
-                negocios.
+                Hola, soy Gonzalo Orlandoni, CEO & FOUNDER de GO Web Solutions. Fundé este estudio con una sola misión:
+                dejar de hacer páginas web genéricas y empezar a construir herramientas de venta reales para negocios.
               </p>
               <p>
                 Nos especializamos en Diseño Web Estratégico, transformando ideas en ecosistemas de alto impacto que no
@@ -236,7 +234,7 @@
           <div class="proyecto-card featured-card" data-aos="fade-up" data-tech="react">
             <div class="proyecto-img-container">
               <div class="skeleton-img" aria-hidden="true"></div>
-              <img src="img/portada_dashboard.png" alt="GOWS Admin Dashboard" loading="lazy" />
+              <img src="img/portada_dashboard.webp" alt="GOWS Admin Dashboard" loading="lazy" />
             </div>
             <div class="proyecto-info">
               <h3>Dashboard Admin</h3>
@@ -354,11 +352,7 @@
               <!-- BLOG CMS (PRÓXIMAMENTE) -->
               <div class="carousel-item proyecto-card" data-tech="nextjs">
                 <div class="proyecto-img-container">
-                  <img
-                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80"
-                    alt="Blog / CMS Corporativo"
-                    loading="lazy"
-                  />
+                  <img src="img/portada_cms.jpg" alt="Blog / CMS Corporativo" loading="lazy" />
                 </div>
                 <div class="proyecto-info">
                   <h3>Blog / CMS Corporativo</h3>
@@ -387,7 +381,7 @@
               <!-- APP DELIVERY -->
               <div class="carousel-item proyecto-card" data-tech="react">
                 <div class="proyecto-img-container">
-                  <img src="img/portada_menu.png" alt="App Delivery & Menú Digital" loading="lazy" />
+                  <img src="img/portada_menu.webp" alt="App Delivery & Menú Digital" loading="lazy" />
                 </div>
                 <div class="proyecto-info">
                   <h3>App Delivery Mobile</h3>
@@ -421,7 +415,7 @@
               <!-- REAL ESTATE (NEW) -->
               <div class="carousel-item proyecto-card" data-tech="react">
                 <div class="proyecto-img-container">
-                  <img src="img/portada_portal.png" alt="Portal Inmobiliario" loading="lazy" />
+                  <img src="img/portada_portal.webp" alt="Portal Inmobiliario" loading="lazy" />
                 </div>
                 <div class="proyecto-info">
                   <h3>Portal Inmobiliario</h3>
@@ -660,18 +654,6 @@
       <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- WhatsApp Floating Button -->
-    <a
-      href="https://wa.me/5491128831895?text=Hola%20Gonzalo%2C%20vi%20tu%20portfolio%20y%20me%20interesa%20hablar%20sobre%20un%20proyecto."
-      id="whatsapp-btn"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
-    >
-      <i class="fab fa-whatsapp"></i>
-      <span class="whatsapp-tooltip">¡Hablemos!</span>
-    </a>
-
     <footer>
       <a href="#" class="logo">
         <img src="img/logofooter.webp" alt="Logo GO Web Solutions - Volver al inicio" loading="lazy" />
@@ -734,5 +716,59 @@
       </div>
       <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
     </footer>
+
+    <script>
+      const canvas = document.getElementById("particles");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let w, h, particles;
+
+        function resize() {
+          w = canvas.width = canvas.offsetWidth;
+          h = canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        const COUNT = Math.floor((w * h) / 22000);
+        particles = Array.from({ length: COUNT }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+        }));
+
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(160,140,190,0.55)";
+            ctx.fill();
+          });
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 120) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = "rgba(94,59,125," + (1 - dist / 120) * 0.35 + ")";
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+          requestAnimationFrame(tick);
+        }
+        tick();
+      }
+    </script>
   </body>
 </html>

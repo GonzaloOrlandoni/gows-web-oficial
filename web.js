@@ -136,86 +136,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 8. Efecto Máquina de Escribir (Hero) ---
-  const sloganElement = document.querySelector(".hero-content .slogan");
+  const sloganElement = document.querySelector(".hero-content .hero-sub");
   if (sloganElement) {
-    const words = [
-      "No hacemos diseño web.",
-      "Transformamos ideas en negocios.",
-      "Soluciones digitales de alto impacto.",
-    ];
-    let wordIndex = 0;
+    const originalText = "Si tu web no te genera clientes, no es un problema de suerte. Es un problema de sistema — y lo resolvemos.";
+    sloganElement.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor">|</span>';
+    const textSpan = sloganElement.querySelector(".typewriter-text");
+    
     let charIndex = 0;
     let isDeleting = false;
 
-    sloganElement.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor"></span>';
-    const textSpan = sloganElement.querySelector(".typewriter-text");
-
     function typeWriter() {
-      const currentWord = words[wordIndex];
       if (isDeleting) {
-        textSpan.textContent = currentWord.substring(0, charIndex - 1);
+        textSpan.textContent = originalText.substring(0, charIndex - 1);
         charIndex--;
       } else {
-        textSpan.textContent = currentWord.substring(0, charIndex + 1);
+        textSpan.textContent = originalText.substring(0, charIndex + 1);
         charIndex++;
       }
 
-      let typeSpeed = isDeleting ? 40 : 80;
+      let typeSpeed = isDeleting ? 20 : 40;
 
-      if (!isDeleting && charIndex === currentWord.length) {
-        typeSpeed = 2500;
+      if (!isDeleting && charIndex === originalText.length) {
+        typeSpeed = 4000;
         isDeleting = true;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        typeSpeed = 500;
+        typeSpeed = 1000;
       }
       setTimeout(typeWriter, typeSpeed);
     }
     setTimeout(typeWriter, 1000);
   }
 
-  // --- 9. Cursor personalizado dinámico ---
-  const cursor = document.querySelector(".custom-cursor");
-  // Verificar si es un dispositivo touch para desactivarlo por completo
-  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-  if (cursor && !isTouchDevice) {
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
-    const clickables = document.querySelectorAll("a, button, .proyecto-card, input, textarea");
-    clickables.forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
-    });
-  }
 
-  // --- 10. Modo Oscuro (Dark Mode) ---
-  const themeBtn = document.getElementById("theme-toggle");
-  const body = document.body;
-  const themeIcon = themeBtn ? themeBtn.querySelector("i") : null;
 
-  if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark-mode");
-    if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
-    if (themeBtn) themeBtn.setAttribute("aria-label", "Cambiar a modo claro");
-  }
-
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-      if (body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-        themeIcon.classList.replace("fa-moon", "fa-sun");
-        themeBtn.setAttribute("aria-label", "Cambiar a modo claro");
-      } else {
-        localStorage.setItem("theme", "light");
-        themeIcon.classList.replace("fa-sun", "fa-moon");
-        themeBtn.setAttribute("aria-label", "Cambiar a modo oscuro");
-      }
-    });
-  }
 
   // --- 11. Easter Egg para Consola (Reclutadores) ---
   const easterEggStyle1 = "color: #5e3b7d; font-size: 24px; font-weight: bold; font-family: 'Montserrat', sans-serif;";
