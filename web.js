@@ -82,11 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 6. Efecto 3D en Tarjetas (VanillaTilt) ---
   if (typeof VanillaTilt !== "undefined") {
-    VanillaTilt.init(document.querySelectorAll(".proyecto-card"), {
+    VanillaTilt.init(document.querySelectorAll(".servicio-item, .proceso-paso, .porquemi-card"), {
       max: 8,
       speed: 400,
       glare: true,
-      "max-glare": 0.2,
+      "max-glare": 0.15,
+      scale: 1.03
     });
   }
 

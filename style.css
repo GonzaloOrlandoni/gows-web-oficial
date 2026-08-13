@@ -1039,15 +1039,13 @@ footer p {
 .tech-marquee-container {
   padding: 2rem 0;
   background-color: var(--background-card);
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
 }
-
-
 
 /* Sombras en los bordes para difuminar entrada/salida */
 .tech-marquee-container::before,
@@ -1086,40 +1084,32 @@ footer p {
 }
 
 .tech-marquee-content {
-  display: inline-flex;
-  gap: 3rem;
-  animation: scrollMarquee 20s linear infinite;
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite;
   align-items: center;
-}
-
-.tech-marquee-content:hover {
-  animation-play-state: paused;
-}
-
-.tech-marquee-content i {
-  font-size: 2.5rem;
-  transition: transform 0.3s;
-}
-
-.tech-marquee-content span {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-left: 0.5rem;
+  font-family: var(--font-stack);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
   color: var(--primary-text);
 }
 
-.tech-marquee-content > * {
-  display: flex;
-  align-items: center;
+.tech-marquee-content span {
+  display: inline-block;
+}
+
+.tech-marquee-content span:nth-child(even) {
+  color: var(--accent-color);
 }
 
 @keyframes scrollMarquee {
   0% {
     transform: translateX(0);
   }
-
   100% {
-    transform: translateX(calc(-50% - 1.5rem));
+    transform: translateX(-33.3333%);
   }
 }
 
@@ -1514,3 +1504,104 @@ footer p {
 
 
 }
+
+
+/* --- CHECKBOX CONSENT (CONTACTO) --- */
+.checkbox-consent {
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+  text-align: left;
+}
+
+.checkbox-consent input[type="checkbox"] {
+  margin: 0 0 0 8px !important;
+  width: auto !important;
+  cursor: pointer;
+  accent-color: var(--accent-color);
+  vertical-align: middle;
+}
+
+.checkbox-consent label {
+  display: block !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.checkbox-consent a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.checkbox-consent a:hover {
+  color: var(--accent-color);
+}
+
+/* --- FOOTER LINKS --- */
+.footer-links {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+.footer-links span {
+  color: #cccccc;
+}
+
+/* --- PRIVACY POLICY PAGE --- */
+.privacy-page {
+  padding: 8rem 2rem 5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.privacy-page h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.privacy-content {
+  background-color: var(--background-card);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.privacy-content h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 2rem 0 1rem;
+}
+
+.privacy-content p {
+  color: var(--secondary-text);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.privacy-content a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.privacy-content a:hover {
+  color: var(--primary-color);
+}
+
