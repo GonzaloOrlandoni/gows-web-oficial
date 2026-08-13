@@ -87,7 +87,7 @@
     <div id="progress-bar"></div>
 
     <header id="navbar" data-aos="fade-in" data-aos-duration="1000" data-aos-once="true">
-      <a href="#" class="logo">GO</a>
+      <a href="#" class="logo">GOWS</a>
       <nav>
         <ul id="nav-links">
           <li><a href="#hero">Inicio</a></li>
@@ -162,18 +162,18 @@
         <h2 data-aos="fade-up">Nuestros Servicios</h2>
         <div class="servicios-grid">
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="100">
-            <h3><i class="fas fa-search"></i> Estrategia & Discovery</h3>
+            <h3>Estrategia & Discovery</h3>
             <p>Entendemos tu mercado, tu cliente ideal y tus objetivos comerciales antes de dibujar un solo píxel.</p>
           </div>
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="200">
-            <h3><i class="fas fa-gem"></i> Diseño UI/UX Premium</h3>
+            <h3>Diseño UI/UX Premium</h3>
             <p>
               Interfaces minimalistas, atractivas y rápidas que generan confianza inmediata y retienen la atención del
               usuario.
             </p>
           </div>
           <div class="servicio-item" data-aos="fade-up" data-aos-delay="300">
-            <h3><i class="fas fa-rocket"></i> Sistemas de Conversión</h3>
+            <h3>Sistemas de Conversión</h3>
             <p>
               Landing pages, webs corporativas y E-commerce diseñados con un solo objetivo final: potenciar tus ventas.
             </p>
@@ -181,19 +181,27 @@
         </div>
       </section>
 
-      <section id="sobre-mi">
-        <div class="sobre-mi-wrapper" data-aos="fade-up" data-aos-duration="800">
+      <section id="sobre-mi" style="position: relative; background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 20px 20px;">
+        <div class="sobre-mi-wrapper glass-container" data-aos="fade-up" data-aos-duration="800">
           <div class="sobre-mi-grid">
-            <div class="sobre-mi-img">
+            <div class="sobre-mi-img" style="position: relative;">
+              <div class="glow-aura"></div>
               <img
                 src="img/fotosobremi.webp"
                 alt="Foto de Gonzalo Orlandoni, Founder & CEO de GO Web Solutions"
                 loading="lazy"
               />
+              <div class="floating-tag tag-left">
+                <i class="fas fa-rocket"></i> Escalabilidad
+              </div>
+              <div class="floating-tag tag-right">
+                <i class="fas fa-paint-brush"></i> UI/UX Premium
+              </div>
             </div>
-            <div class="sobre-mi-texto">
+            <div class="sobre-mi-texto" style="position: relative;">
+              
               <h2>El Estudio</h2>
-              <h3>Detrás de GO Web Solutions</h3>
+              <h3>Detrás de <span class="text-gradient">GO Web Solutions</span></h3>
               <p>
                 Hola, soy Gonzalo Orlandoni, CEO & FOUNDER de GO Web Solutions. Fundé este estudio con una sola misión:
                 dejar de hacer páginas web genéricas y empezar a construir herramientas de venta reales para negocios.
@@ -236,11 +244,6 @@
                 Panel administrativo con KPIs, gráficos interactivos, dark/light mode y exportación de datos en tiempo
                 real.
               </p>
-              <div class="tech-badges">
-                <span class="badge">React</span>
-                <span class="badge">Recharts</span>
-                <span class="badge">Vite</span>
-              </div>
               <div class="proyecto-botones">
                 <a
                   href="https://gows-admin-dashboard.vercel.app/"
@@ -273,11 +276,6 @@
                 Sistema de gestión de turnos premium. Interfaz intuitiva con flujo paso a paso y selección de
                 especialistas.
               </p>
-              <div class="tech-badges">
-                <span class="badge">React</span>
-                <span class="badge">Tailwind v4</span>
-                <span class="badge">Framer Motion</span>
-              </div>
               <div class="proyecto-botones">
                 <a
                   href="https://gows-booking-app.vercel.app/"
@@ -307,11 +305,6 @@
             <div class="proyecto-info">
               <h3>GOWS Hardware</h3>
               <p>E-commerce masivo con armador de PC dinámico y gestión de stock. Optimizado para SEO y performance.</p>
-              <div class="tech-badges">
-                <span class="badge">Next.js</span>
-                <span class="badge">Tailwind</span>
-                <span class="badge">React</span>
-              </div>
               <div class="proyecto-botones">
                 <a
                   href="https://gowshardware.vercel.app/"
@@ -337,27 +330,20 @@
 
         <!-- CAROUSEL DE OTROS PROYECTOS -->
         <div class="carousel-container" data-aos="fade-up">
-          <button class="carousel-control prev" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
 
           <div class="carousel-track-container">
             <div class="carousel-track">
+              <div class="carousel-inner">
               <!-- APP DELIVERY -->
               <div class="carousel-item proyecto-card" data-tech="react">
                 <div class="proyecto-img-container">
-                  <img src="img/portada_menu.webp" alt="App Delivery & Menú Digital" loading="lazy" />
+                  <img src="img/portada_menu.webp" alt="App Delivery & Menú Digital"  />
                 </div>
                 <div class="proyecto-info">
                   <h3>App Delivery Mobile</h3>
                   <p>
                     Plataforma mobile-first con carrito interactivo, panel de usuario y checkout avanzado vía WhatsApp.
                   </p>
-                  <div class="tech-badges">
-                    <span class="badge">React</span>
-                    <span class="badge">Vite</span>
-                    <span class="badge">Lucide</span>
-                  </div>
                   <div class="proyecto-botones">
                     <a
                       href="https://gows-menu-digital.vercel.app/"
@@ -374,9 +360,7 @@
                       title="Ver Código"
                       ><i class="fab fa-github"></i
                     ></a>
-                  </div>
-                </div>
-              </div>
+                  </div></div></div>
               <!-- REAL ESTATE (NEW) -->
               <div class="carousel-item proyecto-card" data-tech="react">
                 <div class="proyecto-img-container">
@@ -385,11 +369,6 @@
                 <div class="proyecto-info">
                   <h3>Portal Inmobiliario</h3>
                   <p>Plataforma de bienes raíces con filtros avanzados, mapa interactivo y favoritos persistentes.</p>
-                  <div class="tech-badges">
-                    <span class="badge">React</span>
-                    <span class="badge">Vite</span>
-                    <span class="badge">Lucide</span>
-                  </div>
                   <div class="proyecto-botones">
                     <a
                       href="https://gows-real-estate.vercel.app/"
@@ -495,12 +474,9 @@
                   </div>
                 </div>
               </div>
+              </div>
             </div>
           </div>
-
-          <button class="carousel-control next" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
         </div>
 
         <div class="portfolio-cta" data-aos="fade-up">
@@ -592,20 +568,29 @@
               <label for="website">No rellenar este campo</label>
               <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
             </div>
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required placeholder="Ej: Go Web Solutions" />
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Ej: gowebsolutions4@gmail.com" />
-
-            <label for="message">Mensaje</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              required
-              placeholder="Hola, quiero llevar mi negocio al siguiente nivel..."
-            ></textarea>
+              <div class="form-group">
+                <input type="text" id="name" name="name" required placeholder="Ej: Go Web Solutions" />
+                <label for="name">Nombre</label>
+                <div class="form-line"></div>
+              </div>
+  
+              <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder="Ej: gowebsolutions4@gmail.com" />
+                <label for="email">Email</label>
+                <div class="form-line"></div>
+              </div>
+  
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Hola, quiero llevar mi negocio al siguiente nivel..."
+                ></textarea>
+                <label for="message">Mensaje</label>
+                <div class="form-line"></div>
+              </div>
 
             <div class="checkbox-consent">
               <label for="privacy-consent">
@@ -625,75 +610,56 @@
     <a href="#" id="scrollToTopBtn" aria-label="Volver al inicio">
       <i class="fas fa-arrow-up"></i>
     </a>
+    
+    <footer id="footer" class="footer-modern">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo-img">
+            <img src="img/logofooter.webp" alt="GOWS Logo" loading="lazy" />
+          </a>
+          <div class="footer-tagline-container">
+            <p class="footer-tagline-modern">
+              Transformando ideas en<br/>
+              <span class="text-gradient">ecosistemas digitales.</span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <a href="#servicios">Servicios</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#proceso">Proceso</a>
+        </div>
 
-    <footer>
-      <a href="#" class="logo">
-        <img src="img/logofooter.webp" alt="Logo GO Web Solutions - Volver al inicio" loading="lazy" />
-      </a>
-      <div class="footer-socials">
-        <a
-          href="https://github.com/GonzaloOrlandoni?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Perfil de GitHub"
-          class="social-icon"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/gonzalo-orlandoni/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Perfil de LinkedIn"
-          class="social-icon"
-        >
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/go_web_solutions/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram de GO Web Solutions"
-          class="social-icon"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-          href="https://www.tiktok.com/@gowebsolutions"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="TikTok de GO Web Solutions"
-          class="social-icon"
-        >
-          <i class="fab fa-tiktok"></i>
-        </a>
+        <div class="footer-contact">
+          <h4>Hablemos</h4>
+          <a href="mailto:gowebsolutions4@gmail.com" class="footer-email">gowebsolutions4@gmail.com</a>
+          <div class="footer-socials">
+            <a href="https://github.com/GonzaloOrlandoni?tab=repositories" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/gonzalo-orlandoni/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/go_web_solutions/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@gowebsolutions" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
       </div>
-
-      <div class="footer-links">
-        <a href="#">Términos y Condiciones</a>
-        <span>|</span>
-        <a href="privacidad.html">Política de Privacidad</a>
+      
+      <div class="footer-bottom">
+        <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
+        <div class="footer-vercel">
+          Powered by
+          <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="currentColor" />
+          </svg>
+          Vercel
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos</a>
+          <span>|</span>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
       </div>
-
-      <div
-        class="footer-vercel"
-        style="
-          margin-bottom: 1.5rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 8px;
-          font-size: 0.85rem;
-          color: #a0a0a0;
-        "
-      >
-        Powered by
-        <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px">
-          <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="currentColor" />
-        </svg>
-        Vercel
-      </div>
-      <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
     </footer>
 
     <script>
@@ -751,3 +717,8 @@
     </script>
   </body>
 </html>
+
+
+
+
+

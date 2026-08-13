@@ -24,16 +24,25 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/api/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script src="web.js" defer></script>
   </head>
 
   <body>
-    <header id="navbar" style="background-color: var(--background-dark);">
-      <a href="index.html" class="logo">GO</a>
+    <canvas id="particles"></canvas>
+    <div class="gows-watermark">GOWS</div>
+    <div id="progress-bar"></div>
+    
+    <header id="navbar">
+      <a href="index.html" class="logo">GOWS</a>
       <nav>
         <ul id="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#sobre-mi">Sobre Mí</a></li>
           <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#proceso">Proceso</a></li>
           <li><a href="index.html#contacto" class="btn btn--primary">CONTACTAR</a></li>
         </ul>
       </nav>
@@ -56,35 +65,121 @@
         <h2>¿Cómo se procesan?</h2>
         <p>El formulario utiliza un webhook hacia una herramienta de automatización (n8n Cloud) que nos permite gestionar los contactos de forma ordenada. Esta herramienta actúa únicamente como procesador técnico de la información, bajo nuestra responsabilidad.</p>
         
-        <p>Este sitio cumple con la Ley 25.326 de Protección de Datos Personales de la República Argentina. Si querés que eliminemos tus datos de nuestros registros, escribinos a <a href="mailto:gowebsolutions4@gmail.com">gowebsolutions4@gmail.com</a>.</p>
+        <p>Este sitio cumple con la Ley 25.326 de Protección de Datos Personales de la República Argentina. Si querés que eliminemos tus datos de nuestros registros, escribinos a <a href="mailto:gowebsolutions4@gmail.com" style="color: #ffffff; text-decoration: underline; font-weight: 600;">gowebsolutions4@gmail.com</a>.</p>
       </div>
     </main>
 
-    <footer style="margin-top: auto;">
-      <a href="index.html" class="logo">
-        <img src="img/logofooter.webp" alt="Logo GO Web Solutions - Volver al inicio" loading="lazy" />
-      </a>
-      <div class="footer-socials">
-        <a href="https://github.com/GonzaloOrlandoni?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/gonzalo-orlandoni/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/go_web_solutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de GO Web Solutions" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@gowebsolutions" target="_blank" rel="noopener noreferrer" aria-label="TikTok de GO Web Solutions" class="social-icon"><i class="fab fa-tiktok"></i></a>
-      </div>
+    <a href="#" id="scrollToTopBtn" aria-label="Volver al inicio">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    <footer id="footer" class="footer-modern">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo-img">
+            <img src="img/logofooter.webp" alt="GOWS Logo" loading="lazy" />
+          </a>
+          <div class="footer-tagline-container">
+            <p class="footer-tagline-modern">
+              Transformando ideas en<br/>
+              <span class="text-gradient">ecosistemas digitales.</span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <a href="#servicios">Servicios</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#proceso">Proceso</a>
+        </div>
 
-      <div class="footer-links">
-        <a href="#">Términos y Condiciones</a>
-        <span>|</span>
-        <a href="privacidad.html">Política de Privacidad</a>
+        <div class="footer-contact">
+          <h4>Hablemos</h4>
+          <a href="mailto:gowebsolutions4@gmail.com" class="footer-email">gowebsolutions4@gmail.com</a>
+          <div class="footer-socials">
+            <a href="https://github.com/GonzaloOrlandoni?tab=repositories" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/gonzalo-orlandoni/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/go_web_solutions/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@gowebsolutions" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
       </div>
-
-      <div class="footer-vercel" style="margin-bottom: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 0.85rem; color: #a0a0a0;">
-        Powered by
-        <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="currentColor" /></svg>
-        Vercel
+      
+      <div class="footer-bottom">
+        <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
+        <div class="footer-vercel">
+          Powered by
+          <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="currentColor" />
+          </svg>
+          Vercel
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos</a>
+          <span>|</span>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
       </div>
-      <p>© 2026 GO Web Solutions. Diseñado y Desarrollado por Gonzalo Orlandoni.</p>
     </footer>
 
     <script src="web.js" defer></script>
+  <script>
+      const canvas = document.getElementById("particles");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let w, h, particles;
+
+        function resize() {
+          w = canvas.width = canvas.offsetWidth;
+          h = canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        const COUNT = Math.floor((w * h) / 22000);
+        particles = Array.from({ length: COUNT }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+        }));
+
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(160,140,190,0.55)";
+            ctx.fill();
+          });
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 120) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = "rgba(94,59,125," + (1 - dist / 120) * 0.35 + ")";
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+          requestAnimationFrame(tick);
+        }
+        tick();
+      }
+    </script>
   </body>
 </html>
+
+
+
+

@@ -185,84 +185,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   console.log("%cEscribime a gowebsolutions4@gmail.com y hablemos de negocios. ☕", easterEggStyle3);
 
-  // --- 12. Lógica del Carrusel de Portfolio ---
-  const carouselContainer = document.querySelector(".carousel-container");
-  const track = document.querySelector(".carousel-track");
-  const prevBtn = document.querySelector(".carousel-control.prev");
-  const nextBtn = document.querySelector(".carousel-control.next");
+  // --- 12. Lógica del Carrusel de Portfolio (CSS Marquee) ---
+  const carouselTrack = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-control.prev-btn");
+  const nextBtn = document.querySelector(".carousel-control.next-btn");
+  
+  if (carouselTrack) {
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
 
-  if (track && prevBtn && nextBtn && carouselContainer) {
-    let currentIndex = 0;
-    let autoPlayInterval;
-
-    const updateCarousel = () => {
-      const items = track.querySelectorAll(".carousel-item");
-      if (items.length === 0) return;
-
-      const itemWidth = items[0].offsetWidth + 24;
-      const containerWidth = track.parentElement.offsetWidth;
-      const visibleItems = Math.floor(containerWidth / itemWidth) || 1;
-      const maxIndex = Math.max(0, items.length - visibleItems);
-
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-      if (currentIndex < 0) currentIndex = 0;
-
-      track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-
-      prevBtn.classList.toggle("disabled", currentIndex === 0);
-      nextBtn.classList.toggle("disabled", currentIndex >= maxIndex);
-    };
-
-    const goNext = () => {
-      const items = track.querySelectorAll(".carousel-item");
-      const itemWidth = items[0].offsetWidth + 24;
-      const containerWidth = track.parentElement.offsetWidth;
-      const visibleItems = Math.floor(containerWidth / itemWidth) || 1;
-      const maxIndex = Math.max(0, items.length - visibleItems);
-
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-      } else {
-        currentIndex = 0; // Loop al inicio para que el autoplay sea continuo
-      }
-      updateCarousel();
-    };
-
-    nextBtn.addEventListener("click", () => {
-      goNext();
-      // Resetea el temporizador si el usuario interactúa manualmente
-      stopAutoPlay();
-      startAutoPlay();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-      }
-      stopAutoPlay();
-      startAutoPlay();
-    });
-
-    window.addEventListener("resize", updateCarousel);
-    setTimeout(updateCarousel, 500);
-
-    // Auto-Play Híbrido: Gira solo pero se pausa al pasar el mouse
-    const startAutoPlay = () => {
-      stopAutoPlay(); // Evita múltiples intervalos
-      autoPlayInterval = setInterval(goNext, 4000);
-    };
-
-    const stopAutoPlay = () => {
-      if (autoPlayInterval) clearInterval(autoPlayInterval);
-    };
-
-    carouselContainer.addEventListener("mouseenter", stopAutoPlay);
-    carouselContainer.addEventListener("mouseleave", startAutoPlay);
-    carouselContainer.addEventListener("touchstart", stopAutoPlay, { passive: true });
-    carouselContainer.addEventListener("touchend", startAutoPlay, { passive: true });
-
-    startAutoPlay();
+    const inner = carouselTrack.querySelector('.carousel-inner');
+    if (inner) {
+      const clone = inner.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      carouselTrack.appendChild(clone);
+    }
   }
 });
 
